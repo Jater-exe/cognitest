@@ -1,0 +1,40 @@
+[gd_scene format=3 uid="uid://b0cakowxxpu62"]
+
+[node name="Main - Control" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Screen Container - Control" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Home Screen - Control" type="Control" parent="Screen Container - Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 680.0
+offset_bottom = 1240.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="Screen Container - Control/Home Screen - Control"]
+layout_mode = 0
+offset_right = 720.0
+offset_bottom = 1280.0
+color = Color(0.65012825, 0.6501283, 0.65012825, 1)
+
+[node name="Objective Test Screen - Control" type="Control" parent="Screen Container - Control"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Subjective Test Screen - Control" type="Control" parent="Screen Container - Control"]
+layout_mode = 1
+anchor_right = 18.0
+anchor_bottom = 32.0
+grow_horizontal = 2
+grow_vertical = 2

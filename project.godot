@@ -10,10 +10,17 @@ config_version=5
 
 [application]
 
-config/name="cognitest"
-config/features=PackedStringArray("4.5", "Mobile")
+config/name="HACKATHON-BITS"
+run/main_scene="uid://b0cakowxxpu62"
+config/features=PackedStringArray("4.5", "GL Compatibility")
 config/icon="res://icon.svg"
+
+[display]
+
+window/size/viewport_width=720
+window/size/viewport_height=1280
 
 [rendering]
 
-renderer/rendering_method="mobile"
+renderer/rendering_method="gl_compatibility"
+renderer/rendering_method.mobile="gl_compatibility"
