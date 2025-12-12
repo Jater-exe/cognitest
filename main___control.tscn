@@ -1,75 +1,94 @@
-[gd_scene load_steps=4 format=3 uid="uid://b0cakowxxpu62"]
+[gd_scene load_steps=5 format=3 uid="uid://dx8j6y8ivrnyg"]
 
-[ext_resource type="Script" uid="uid://p31pqne54mcv" path="res://HomeScreenScript.gd" id="1_5g0qx"]
 [ext_resource type="Texture2D" uid="uid://ci22wlqmmafcs" path="res://button.png" id="1_l6bai"]
 [ext_resource type="Texture2D" uid="uid://ct747n361h7pv" path="res://icon.svg" id="1_r6nbc"]
+[ext_resource type="Script" path="res://objective_script.gd" id="1_sf1k2"]
+[ext_resource type="Texture2D" path="res://textures_objective/green.png" id="4_fpmnj"]
 
-[node name="Main - Control" type="Control"]
+[node name="Objective - Control" type="Control"]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="Screen Container - Control" type="Control" parent="."]
+[node name="Objective Screen Container - Control" type="Control" parent="."]
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="Home Screen - Control" type="Control" parent="Screen Container - Control"]
+[node name="Objective Screen - Control" type="Control" parent="Objective Screen Container - Control"]
 layout_mode = 1
 anchor_right = 18.0
 anchor_bottom = 32.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_5g0qx")
+script = ExtResource("1_sf1k2")
 
-[node name="ColorRect" type="ColorRect" parent="Screen Container - Control/Home Screen - Control"]
+[node name="ColorRect" type="ColorRect" parent="Objective Screen Container - Control/Objective Screen - Control"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.65012825, 0.6501283, 0.65012825, 1)
+color = Color(0.47072184, 0.6783254, 0.83166593, 1)
 
-[node name="Center Container - Control" type="Control" parent="Screen Container - Control/Home Screen - Control"]
+[node name="Center Container - Control" type="Control" parent="Objective Screen Container - Control/Objective Screen - Control"]
 anchors_preset = 0
 offset_right = 720.0
 offset_bottom = 1280.0
 
-[node name="Title" type="TextureRect" parent="Screen Container - Control/Home Screen - Control/Center Container - Control"]
+[node name="Title" type="TextureRect" parent="Objective Screen Container - Control/Objective Screen - Control/Center Container - Control"]
 layout_mode = 0
-offset_left = 160.0
-offset_top = 77.0
-offset_right = 560.0
-offset_bottom = 205.0
+offset_left = 158.0
+offset_top = 43.0
+offset_right = 558.0
+offset_bottom = 171.0
 texture = ExtResource("1_r6nbc")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Screen Container - Control/Home Screen - Control/Center Container - Control"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Objective Screen Container - Control/Objective Screen - Control/Center Container - Control"]
 layout_mode = 1
-anchors_preset = 13
+anchors_preset = 8
 anchor_left = 0.5
+anchor_top = 0.5
 anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -200.0
-offset_top = 174.0
-offset_right = 200.0
+anchor_bottom = 0.5
+offset_left = -257.0
+offset_top = -476.0
+offset_right = 143.0
+offset_bottom = 724.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/separation = 100
+scale = Vector2(1.2799994, 0.7599988)
+theme_override_constants/separation = 50
 alignment = 1
 
-[node name="Objective - Button" type="TextureButton" parent="Screen Container - Control/Home Screen - Control/Center Container - Control/VBoxContainer"]
+[node name="TextureButton" type="TextureButton" parent="Objective Screen Container - Control/Objective Screen - Control/Center Container - Control/VBoxContainer"]
 layout_mode = 2
 toggle_mode = true
 texture_normal = ExtResource("1_l6bai")
 
-[node name="TextureButton2" type="TextureButton" parent="Screen Container - Control/Home Screen - Control/Center Container - Control/VBoxContainer"]
+[node name="TextureButton2" type="TextureButton" parent="Objective Screen Container - Control/Objective Screen - Control/Center Container - Control/VBoxContainer"]
 layout_mode = 2
 texture_normal = ExtResource("1_l6bai")
 
-[node name="TextureButton3" type="TextureButton" parent="Screen Container - Control/Home Screen - Control/Center Container - Control/VBoxContainer"]
+[node name="TextureButton3" type="TextureButton" parent="Objective Screen Container - Control/Objective Screen - Control/Center Container - Control/VBoxContainer"]
 layout_mode = 2
 texture_normal = ExtResource("1_l6bai")
 
-[connection signal="pressed" from="Screen Container - Control/Home Screen - Control/Center Container - Control/VBoxContainer/Objective - Button" to="Screen Container - Control/Home Screen - Control" method="_on_objective__button_pressed"]
+[node name="TextureButton4" type="TextureButton" parent="Objective Screen Container - Control/Objective Screen - Control/Center Container - Control/VBoxContainer"]
+layout_mode = 2
+toggle_mode = true
+texture_normal = ExtResource("1_l6bai")
+
+[node name="Exit_Button" type="TextureButton" parent="Objective Screen Container - Control/Objective Screen - Control/Center Container - Control"]
+layout_mode = 0
+offset_left = 160.00002
+offset_top = 1051.0
+offset_right = 1145.0
+offset_bottom = 2335.0
+scale = Vector2(0.3778972, 0.10078017)
+toggle_mode = true
+texture_normal = ExtResource("4_fpmnj")
+
+[connection signal="pressed" from="Objective Screen Container - Control/Objective Screen - Control/Center Container - Control/Exit_Button" to="Objective Screen Container - Control/Objective Screen - Control" method="_on_exit_button_pressed"]
