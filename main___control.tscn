@@ -25,6 +25,8 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 color = Color(0.65012825, 0.6501283, 0.65012825, 1)
 
 [node name="Center Container - Control" type="Control" parent="Screen Container - Control/Home Screen - Control"]
@@ -49,6 +51,7 @@ alignment = 1
 
 [node name="TextureButton" type="TextureButton" parent="Screen Container - Control/Home Screen - Control/Center Container - Control/VBoxContainer"]
 layout_mode = 2
+toggle_mode = true
 texture_normal = ExtResource("1_l6bai")
 
 [node name="TextureButton2" type="TextureButton" parent="Screen Container - Control/Home Screen - Control/Center Container - Control/VBoxContainer"]
