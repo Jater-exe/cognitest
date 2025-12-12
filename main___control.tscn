@@ -1,5 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://b0cakowxxpu62"]
+[gd_scene load_steps=4 format=3 uid="uid://b0cakowxxpu62"]
 
+[ext_resource type="Script" uid="uid://p31pqne54mcv" path="res://HomeScreenScript.gd" id="1_5g0qx"]
 [ext_resource type="Texture2D" uid="uid://ci22wlqmmafcs" path="res://button.png" id="1_l6bai"]
 [ext_resource type="Texture2D" uid="uid://ct747n361h7pv" path="res://icon.svg" id="1_r6nbc"]
 
@@ -20,6 +21,7 @@ anchor_right = 18.0
 anchor_bottom = 32.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_5g0qx")
 
 [node name="ColorRect" type="ColorRect" parent="Screen Container - Control/Home Screen - Control"]
 layout_mode = 1
@@ -57,7 +59,7 @@ grow_vertical = 2
 theme_override_constants/separation = 100
 alignment = 1
 
-[node name="TextureButton" type="TextureButton" parent="Screen Container - Control/Home Screen - Control/Center Container - Control/VBoxContainer"]
+[node name="Objective - Button" type="TextureButton" parent="Screen Container - Control/Home Screen - Control/Center Container - Control/VBoxContainer"]
 layout_mode = 2
 toggle_mode = true
 texture_normal = ExtResource("1_l6bai")
@@ -70,14 +72,4 @@ texture_normal = ExtResource("1_l6bai")
 layout_mode = 2
 texture_normal = ExtResource("1_l6bai")
 
-[node name="Objective Test Screen - Control" type="Control" parent="Screen Container - Control"]
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="Subjective Test Screen - Control" type="Control" parent="Screen Container - Control"]
-layout_mode = 1
-anchor_right = 18.0
-anchor_bottom = 32.0
-grow_horizontal = 2
-grow_vertical = 2
+[connection signal="pressed" from="Screen Container - Control/Home Screen - Control/Center Container - Control/VBoxContainer/Objective - Button" to="Screen Container - Control/Home Screen - Control" method="_on_objective__button_pressed"]
