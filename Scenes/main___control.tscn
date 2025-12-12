@@ -1,7 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://5fsn5x707g1i"]
+[gd_scene load_steps=4 format=3 uid="uid://b0cakowxxpu62"]
 
 [ext_resource type="Script" uid="uid://p31pqne54mcv" path="res://HomeScreenScript.gd" id="1_5g0qx"]
-[ext_resource type="Texture2D" path="res://button.png" id="1_l6bai"]
+[ext_resource type="Texture2D" uid="uid://ci22wlqmmafcs" path="res://button.png" id="1_l6bai"]
 [ext_resource type="Texture2D" uid="uid://ct747n361h7pv" path="res://icon.svg" id="1_r6nbc"]
 
 [node name="Main - Control" type="Control"]
