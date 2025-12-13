@@ -11,29 +11,53 @@ var lista_preguntas = [
 	"He tingut problemes per recordar informació que ja sabia prèviament",
 	"He tingut problemes per prendre una decisió que abans no m’hauria costat",
 	"He tingut dificultats per planificar el meu dia",	
+	"He sentit sensació de nebulosa mental",
+	"He sentit que penso més lenta avui"
+]
+
+var tipus_preg = [
+	"atencio",
+	"vel_proc",
+	"flu_verb",
+	"atencio",
+	"memoria",
+	"memoria",
+	"func_exec",
+	"func_exec",
+	"func_exec",
+	"vel_proc"
 ]
 
 # --- VARIABLES DE ESTADO ---
 var indice_pregunta_actual = 0
 var respuestas_guardadas = [] # Aquí se irán guardando los "SI" y "NO"
+var stats_preguntes = []
+var cont_atencio = 0
+var cont_vel_proc = 0
+var cont_flu_verb = 0
+var cont_mem = 0
+var cont_func_exec = 0
 
 # --- REFERENCIAS A NODOS ---
 # Ajusta estas rutas para que coincidan con tu árbol de escena
 @onready var label_pregunta = $Label
 @onready var boton_no = $MarginContainer/HBoxContainer/BOTONO 
 @onready var boton_si = $MarginContainer/HBoxContainer/BOTOSI
+@onready var boton_return = $MarginContainer2/RETURN
 
+@export var escena_destino: PackedScene
 # Definimos la ruta de la "Base de Datos"
 const RUTA_DB = "user://resultados_test.json"
 
-func guardar_nuevo_resultado(respuestas_nuevas: Array):
+func guardar_nuevo_resultado(respuestas_nuevas: Array, stats: Array):
 	# 1. Cargar la DB existente (Deserialización)
 	var db_completa = _cargar_base_datos()
 	
 	# 2. Crear el nuevo registro (Struct/Object)
 	var nuevo_registro = {
 		"fecha": Time.get_datetime_string_from_system(),
-		"respuestas": respuestas_nuevas
+		"respuestas": respuestas_nuevas,
+		"puntuacio": stats
 		# Podrías añadir "puntuacion" o lo que quieras aquí
 	}
 	
@@ -87,6 +111,7 @@ func _ready():
 	# Esto hace que cuando se pulse, se ejecute la función indicada
 	boton_si.pressed.connect(_cuando_pulsa_si)
 	boton_no.pressed.connect(_cuando_pulsa_no)
+	boton_return.pressed.connect(_return_home_screen)
 
 # Esta función se encarga de cambiar el texto
 func actualizar_interfaz():
@@ -98,18 +123,38 @@ func actualizar_interfaz():
 
 # Lógica cuando pulsa SI
 func _cuando_pulsa_si():
-	guardar_y_avanzar("PREGUNTA " + str(indice_pregunta_actual) + ": SI")
+	guardar_y_avanzar(true)
 
 # Lógica cuando pulsa NO
 func _cuando_pulsa_no():
-	guardar_y_avanzar("PREGUNTA " + str(indice_pregunta_actual) + ": NO")
+	guardar_y_avanzar(false)
+
+func _return_home_screen():
+	if escena_destino:
+		# Instancia la nueva escena y destruye la actual
+		get_tree().change_scene_to_packed(escena_destino)
+	else:
+		push_error("¡No has asignado la escena en el Inspector!")
 
 # Función central que hace el trabajo sucio
-func guardar_y_avanzar(respuesta_elegida):
-	# 1. Guardamos la respuesta en nuestra lista
-	respuestas_guardadas.append(respuesta_elegida)
-	print("Respuesta guardada: ", respuesta_elegida)
+func guardar_y_avanzar(resposta):
+	var t_preg = tipus_preg[indice_pregunta_actual]
 	
+	if resposta: #La resposta ha estat afirmativa
+		if t_preg == "atencio":
+			cont_atencio+=1
+		elif t_preg == "vel_proc":
+			cont_vel_proc+=1
+		elif t_preg == "flu_verb":
+			cont_flu_verb+=1
+		elif t_preg == "memoria":
+			cont_mem+=1
+		elif t_preg == "func_exec":
+			cont_func_exec+=1
+		# 1. Guardamos la respuesta en nuestra lista
+		respuestas_guardadas.append("PREGUNTA " + str(indice_pregunta_actual + 1) + " - TIPUS " + t_preg + " - SI")
+	else:
+		respuestas_guardadas.append("PREGUNTA " + str(indice_pregunta_actual + 1) + " - TIPUS " + t_preg + " - NO")
 	# 2. Avanzamos al siguiente número de pregunta
 	indice_pregunta_actual += 1
 	
@@ -118,10 +163,20 @@ func guardar_y_avanzar(respuesta_elegida):
 
 func fin_del_juego():
 	label_pregunta.text = "Enquesta acabada!"
+	
+	stats_preguntes.append("ATENCIO: " + str(cont_atencio))
+	stats_preguntes.append("VEL_PROC: " + str(cont_vel_proc))
+	stats_preguntes.append("MEMORIA: " + str(cont_mem))
+	stats_preguntes.append("FLU_VERB: " + str(cont_flu_verb))
+	stats_preguntes.append("FUNC_EXEC: " + str(cont_func_exec))
+	
+	
+
 	# Ocultamos los botones para que no puedan seguir pulsando
 	boton_si.visible = false
 	boton_no.visible = false
+	boton_return.visible = true;
 	
-	guardar_nuevo_resultado(respuestas_guardadas)
+	guardar_nuevo_resultado(respuestas_guardadas, stats_preguntes)
 	
 	# Aquí podrías cambiar de escena o mostrar resultados
