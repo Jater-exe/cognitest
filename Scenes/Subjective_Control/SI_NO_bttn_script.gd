@@ -47,7 +47,7 @@ var cont_func_exec = 0
 
 @export var escena_destino: PackedScene
 # Definimos la ruta de la "Base de Datos"
-const RUTA_DB = "user://resultados_test.json"
+const RUTA_DB = "res://resultados_test.json"
 
 func guardar_nuevo_resultado(respuestas_nuevas: Array, stats: Array):
 	# 1. Cargar la DB existente (Deserialización)

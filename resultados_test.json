@@ -1,0 +1,26 @@
+{
+	"registros": [
+		{
+			"fecha": "2025-12-13T20:20:00",
+			"puntuacio": [
+				"ATENCIO: 1",
+				"VEL_PROC: 1",
+				"MEMORIA: 1",
+				"FLU_VERB: 0",
+				"FUNC_EXEC: 2"
+			],
+			"respuestas": [
+				"PREGUNTA 1 - TIPUS atencio - NO",
+				"PREGUNTA 2 - TIPUS vel_proc - SI",
+				"PREGUNTA 3 - TIPUS flu_verb - NO",
+				"PREGUNTA 4 - TIPUS atencio - SI",
+				"PREGUNTA 5 - TIPUS memoria - NO",
+				"PREGUNTA 6 - TIPUS memoria - SI",
+				"PREGUNTA 7 - TIPUS func_exec - SI",
+				"PREGUNTA 8 - TIPUS func_exec - SI",
+				"PREGUNTA 9 - TIPUS func_exec - NO",
+				"PREGUNTA 10 - TIPUS vel_proc - NO"
+			]
+		}
+	]
+}

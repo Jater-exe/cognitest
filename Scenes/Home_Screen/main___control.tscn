@@ -6,7 +6,7 @@
 [ext_resource type="Script" uid="uid://dndkplqqje7eu" path="res://Scenes/Home_Screen/objective_button_container.gd" id="3_6irpr"]
 [ext_resource type="Texture2D" uid="uid://6il42pqq7n8n" path="res://Textures/normal_button.png" id="3_qswn0"]
 [ext_resource type="Texture2D" uid="uid://ccxyj4inyh5ge" path="res://Textures/tortuga_static.png" id="4_scu8h"]
-[ext_resource type="Script" uid="uid://cb8empew1vb8f" path="res://Scenes/Home_Screen/subjective_button_container.gd" id="6_3uva4"]
+[ext_resource type="Script" path="res://Scenes/Home_Screen/subjective_button_container.gd" id="6_3uva4"]
 [ext_resource type="Script" uid="uid://dv2gy5vbibifh" path="res://Scenes/Objective_Control/estadisticas_button_container.gd" id="7_6irpr"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_3uva4"]
