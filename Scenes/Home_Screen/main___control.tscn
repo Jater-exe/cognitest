@@ -2,11 +2,11 @@
 
 [ext_resource type="Script" uid="uid://p31pqne54mcv" path="res://HomeScreenScript.gd" id="1_5g0qx"]
 [ext_resource type="Texture2D" uid="uid://ct747n361h7pv" path="res://icon.svg" id="1_r6nbc"]
-[ext_resource type="Script" path="res://Scenes/Home_Screen/animation_title.gd" id="2_6irpr"]
+[ext_resource type="Script" uid="uid://d0wyejdcaagv4" path="res://Scenes/Home_Screen/animation_title.gd" id="2_6irpr"]
 [ext_resource type="Script" uid="uid://dndkplqqje7eu" path="res://Scenes/Home_Screen/objective_button_container.gd" id="3_6irpr"]
 [ext_resource type="Texture2D" uid="uid://6il42pqq7n8n" path="res://Textures/normal_button.png" id="3_qswn0"]
 [ext_resource type="Texture2D" uid="uid://ccxyj4inyh5ge" path="res://Textures/tortuga_static.png" id="4_scu8h"]
-[ext_resource type="Script" path="res://Scenes/Home_Screen/subjective_button_container.gd" id="6_3uva4"]
+[ext_resource type="Script" uid="uid://cb8empew1vb8f" path="res://Scenes/Home_Screen/subjective_button_container.gd" id="6_3uva4"]
 [ext_resource type="Script" uid="uid://dv2gy5vbibifh" path="res://Scenes/Objective_Control/estadisticas_button_container.gd" id="7_6irpr"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_3uva4"]
@@ -18,6 +18,7 @@ outline_size = 23
 resource_name = "Idle_Title_Animation"
 length = 2.0
 loop_mode = 1
+step = 0.0333
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -25,10 +26,10 @@ tracks/0/path = NodePath(".:position")
 tracks/0/interp = 2
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 1, 2),
+"times": PackedFloat32Array(0, 0.06666667, 1.0666667),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Vector2(36, 54), Vector2(36, 64), Vector2(36, 54)]
+"values": [Vector2(36, 54), Vector2(36, 54), Vector2(36, 64)]
 }
 
 [sub_resource type="Animation" id="Animation_3uva4"]
