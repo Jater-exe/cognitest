@@ -1,13 +1,13 @@
-[gd_scene load_steps=15 format=3 uid="uid://5fsn5x707g1i"]
+[gd_scene load_steps=15 format=3 uid="uid://ceaybyflkcb1m"]
 
-[ext_resource type="Script" uid="uid://p31pqne54mcv" path="res://HomeScreenScript.gd" id="1_nifig"]
-[ext_resource type="Script" uid="uid://d0wyejdcaagv4" path="res://Scenes/Home_Screen/animation_title.gd" id="2_lw1dy"]
-[ext_resource type="Texture2D" uid="uid://ct747n361h7pv" path="res://icon.svg" id="3_wd27q"]
-[ext_resource type="Script" uid="uid://dndkplqqje7eu" path="res://Scenes/Home_Screen/objective_button_container.gd" id="4_d0d35"]
-[ext_resource type="Texture2D" uid="uid://6il42pqq7n8n" path="res://Textures/normal_button.png" id="5_ehf3m"]
-[ext_resource type="Script" uid="uid://cb8empew1vb8f" path="res://Scenes/Home_Screen/subjective_button_container.gd" id="6_fuuci"]
-[ext_resource type="Script" uid="uid://dv2gy5vbibifh" path="res://Scenes/Objective_Control/estadisticas_button_container.gd" id="7_2x45q"]
-[ext_resource type="Texture2D" uid="uid://ccxyj4inyh5ge" path="res://Textures/tortuga_static.png" id="8_mfemk"]
+[ext_resource type="Script" uid="uid://p31pqne54mcv" path="res://HomeScreenScript.gd" id="1_5g0qx"]
+[ext_resource type="Texture2D" uid="uid://ct747n361h7pv" path="res://icon.svg" id="1_r6nbc"]
+[ext_resource type="Script" uid="uid://d0wyejdcaagv4" path="res://Scenes/Home_Screen/animation_title.gd" id="2_6irpr"]
+[ext_resource type="Script" uid="uid://dndkplqqje7eu" path="res://Scenes/Home_Screen/objective_button_container.gd" id="3_6irpr"]
+[ext_resource type="Texture2D" uid="uid://6il42pqq7n8n" path="res://Textures/normal_button.png" id="3_qswn0"]
+[ext_resource type="Texture2D" uid="uid://ccxyj4inyh5ge" path="res://Textures/tortuga_static.png" id="4_scu8h"]
+[ext_resource type="Script" uid="uid://cb8empew1vb8f" path="res://Scenes/Home_Screen/subjective_button_container.gd" id="6_3uva4"]
+[ext_resource type="Script" uid="uid://dv2gy5vbibifh" path="res://Scenes/Objective_Control/estadisticas_button_container.gd" id="7_6irpr"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_3uva4"]
 font_size = 110
@@ -72,13 +72,15 @@ outline_size = 11
 layout_mode = 3
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_right = -680.0
-offset_bottom = -1240.0
+offset_right = -670.0
+offset_bottom = -1233.0
 
 [node name="Screen Container - Control" type="Control" parent="."]
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+layout_mode = 1
+anchor_right = 14.43
+anchor_bottom = 27.251001
+offset_right = -681.5
+offset_bottom = -1240.7971
 
 [node name="Home Screen - Control" type="Control" parent="Screen Container - Control"]
 layout_mode = 1
@@ -86,7 +88,7 @@ anchor_right = 18.0
 anchor_bottom = 32.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_nifig")
+script = ExtResource("1_5g0qx")
 
 [node name="ColorRect" type="ColorRect" parent="Screen Container - Control/Home Screen - Control"]
 layout_mode = 1
@@ -119,7 +121,7 @@ process_priority = 1
 libraries = {
 &"": SubResource("AnimationLibrary_6irpr")
 }
-script = ExtResource("2_lw1dy")
+script = ExtResource("2_6irpr")
 
 [node name="Title" type="TextureRect" parent="Screen Container - Control/Home Screen - Control/Center Container - Control"]
 visible = false
@@ -128,7 +130,7 @@ offset_left = 160.0
 offset_top = 77.0
 offset_right = 560.0
 offset_bottom = 205.0
-texture = ExtResource("3_wd27q")
+texture = ExtResource("1_r6nbc")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Screen Container - Control/Home Screen - Control/Center Container - Control"]
 layout_mode = 1
@@ -149,12 +151,12 @@ alignment = 1
 [node name="Objective Button Container" type="MarginContainer" parent="Screen Container - Control/Home Screen - Control/Center Container - Control/VBoxContainer"]
 layout_mode = 2
 theme_override_constants/margin_left = 0
-script = ExtResource("4_d0d35")
+script = ExtResource("3_6irpr")
 
 [node name="Objective - Button" type="TextureButton" parent="Screen Container - Control/Home Screen - Control/Center Container - Control/VBoxContainer/Objective Button Container"]
 layout_mode = 2
 toggle_mode = true
-texture_normal = ExtResource("5_ehf3m")
+texture_normal = ExtResource("3_qswn0")
 script = SubResource("GDScript_vjsdi")
 
 [node name="RichTextLabel" type="Label" parent="Screen Container - Control/Home Screen - Control/Center Container - Control/VBoxContainer/Objective Button Container"]
@@ -166,12 +168,12 @@ vertical_alignment = 1
 
 [node name="Subjective Button Container" type="MarginContainer" parent="Screen Container - Control/Home Screen - Control/Center Container - Control/VBoxContainer"]
 layout_mode = 2
-script = ExtResource("6_fuuci")
+script = ExtResource("6_3uva4")
 
 [node name="Subjective - Button" type="TextureButton" parent="Screen Container - Control/Home Screen - Control/Center Container - Control/VBoxContainer/Subjective Button Container"]
 layout_mode = 2
 toggle_mode = true
-texture_normal = ExtResource("5_ehf3m")
+texture_normal = ExtResource("3_qswn0")
 script = SubResource("GDScript_vjsdi")
 
 [node name="RichTextLabel" type="Label" parent="Screen Container - Control/Home Screen - Control/Center Container - Control/VBoxContainer/Subjective Button Container"]
@@ -183,12 +185,12 @@ vertical_alignment = 1
 
 [node name="Estadisticas Button Container" type="MarginContainer" parent="Screen Container - Control/Home Screen - Control/Center Container - Control/VBoxContainer"]
 layout_mode = 2
-script = ExtResource("7_2x45q")
+script = ExtResource("7_6irpr")
 
 [node name="Tests - Button" type="TextureButton" parent="Screen Container - Control/Home Screen - Control/Center Container - Control/VBoxContainer/Estadisticas Button Container"]
 layout_mode = 2
 toggle_mode = true
-texture_normal = ExtResource("5_ehf3m")
+texture_normal = ExtResource("3_qswn0")
 script = SubResource("GDScript_vjsdi")
 
 [node name="RichTextLabel" type="Label" parent="Screen Container - Control/Home Screen - Control/Center Container - Control/VBoxContainer/Estadisticas Button Container"]
@@ -206,7 +208,7 @@ offset_right = 1495.0
 offset_bottom = 1054.0
 rotation = 0.27576202
 scale = Vector2(0.35, 0.35)
-texture = ExtResource("8_mfemk")
+texture = ExtResource("4_scu8h")
 
 [connection signal="button_down" from="Screen Container - Control/Home Screen - Control/Center Container - Control/VBoxContainer/Objective Button Container/Objective - Button" to="Screen Container - Control/Home Screen - Control/Center Container - Control/VBoxContainer/Objective Button Container" method="_on_objective__button_button_down"]
 [connection signal="button_up" from="Screen Container - Control/Home Screen - Control/Center Container - Control/VBoxContainer/Objective Button Container/Objective - Button" to="Screen Container - Control/Home Screen - Control/Center Container - Control/VBoxContainer/Objective Button Container" method="_on_objective__button_button_up"]
