@@ -7,9 +7,9 @@
 [ext_resource type="Script" uid="uid://cgyvg66jocrn7" path="res://Scenes/Stats_Control/script_exit_button.gd" id="5_iuieq"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_luai5"]
-font_size = 100
+font_size = 90
 font_color = Color(0.3137255, 0.4117647, 0.18431373, 1)
-outline_size = 20
+outline_size = 18
 
 [sub_resource type="LabelSettings" id="LabelSettings_wsgvv"]
 font_size = 60
@@ -70,7 +70,7 @@ offset_left = 50.0
 offset_top = 42.0
 offset_right = 818.0
 offset_bottom = 207.0
-text = "Estadistiques"
+text = "Recomenació"
 label_settings = SubResource("LabelSettings_luai5")
 
 [node name="Video Button Container" type="MarginContainer" parent="Screen Container - Control/Home Screen - Control/Center Container - Control"]
@@ -89,7 +89,7 @@ texture_normal = ExtResource("4_f5k4b")
 
 [node name="Start-Text" type="Label" parent="Screen Container - Control/Home Screen - Control/Center Container - Control/Video Button Container"]
 layout_mode = 2
-text = "BEGIN"
+text = "Veure vídeo"
 label_settings = SubResource("LabelSettings_wsgvv")
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -110,7 +110,7 @@ texture_normal = ExtResource("4_f5k4b")
 [node name="Exit-Text" type="Label" parent="Screen Container - Control/Home Screen - Control/Center Container - Control/Exit Button Container"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-text = "EXIT"
+text = "Exit"
 label_settings = SubResource("LabelSettings_gmdkr")
 horizontal_alignment = 1
 vertical_alignment = 1

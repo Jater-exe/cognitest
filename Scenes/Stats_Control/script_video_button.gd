@@ -33,4 +33,4 @@ func _on_start__button_button_up() -> void:
 
 
 func _on_start__button_pressed() -> void:
-	get_tree().change_scene_to_file("https://www.youtube.com/watch?v=dQw4w9WgXcQ&list=RDdQw4w9WgXcQ&start_radio=1")
+	OS.shell_open("https://www.youtube.com/watch?v=dQw4w9WgXcQ&list=RDdQw4w9WgXcQ&start_radio=1")

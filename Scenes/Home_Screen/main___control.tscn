@@ -197,7 +197,7 @@ script = SubResource("GDScript_vjsdi")
 
 [node name="RichTextLabel" type="Label" parent="Screen Container - Control/Home Screen - Control/Center Container - Control/VBoxContainer/Estadisticas Button Container"]
 layout_mode = 2
-text = "Estadistiques"
+text = "Recomenació"
 label_settings = SubResource("LabelSettings_scu8h")
 horizontal_alignment = 1
 vertical_alignment = 1
