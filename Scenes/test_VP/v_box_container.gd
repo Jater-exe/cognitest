@@ -41,6 +41,9 @@ func create_numbered_buttons(numbers: Array[int], target_container: HBoxContaine
 		
 	for number in numbers:
 		var button_instance = BUTTON_SCENE.instantiate()
+		var button_label: Label = button_instance.find_child("NumLabel")
+		button_label.text = str(number)
+		
 		
 		if button_instance is Button:
 			button_instance.text = str(number)
@@ -53,8 +56,7 @@ func create_numbered_buttons(numbers: Array[int], target_container: HBoxContaine
 			Callable(self, "_on_number_button_pressed").bind(number)
 		)
 func _on_number_button_pressed(number_value: int) -> void:
-	# This function is called whenever ANY of the generated buttons is pressed.
-	# The 'number_value' argument tells you which number button it was.
+	
 	print("Button pressed! The value is: ", number_value)
 	
 	# Example: Check if the number is even

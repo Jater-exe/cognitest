@@ -1,8 +1,14 @@
-[gd_scene load_steps=3 format=3 uid="uid://bdwq14dche5bn"]
+[gd_scene load_steps=5 format=3 uid="uid://bdwq14dche5bn"]
 
 [ext_resource type="Texture2D" uid="uid://6il42pqq7n8n" path="res://Textures/normal_button.png" id="1_u6lyd"]
+[ext_resource type="Script" uid="uid://b6n4m0i1ctb51" path="res://Scenes/test_VP/number_button.gd" id="2_of8b2"]
 
 [sub_resource type="Theme" id="Theme_u6lyd"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_u6lyd"]
+font_size = 50
+font_color = Color(0.3137255, 0.4117647, 0.18431373, 1)
+outline_size = 15
 
 [node name="NumberButton" type="TextureButton"]
 custom_minimum_size = Vector2(75, 75)
@@ -12,3 +18,21 @@ theme = SubResource("Theme_u6lyd")
 texture_normal = ExtResource("1_u6lyd")
 ignore_texture_size = true
 stretch_mode = 0
+script = ExtResource("2_of8b2")
+
+[node name="NumLabel" type="Label" parent="."]
+clip_contents = true
+custom_minimum_size = Vector2(10, 10)
+layout_mode = 0
+offset_left = -78.0
+offset_top = -35.0
+offset_right = 151.0
+offset_bottom = 106.0
+theme_override_font_sizes/font_size = 16
+text = "2"
+label_settings = SubResource("LabelSettings_u6lyd")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="button_down" from="." to="." method="_on_texture_button_down"]
+[connection signal="button_up" from="." to="." method="_on_texture_button_up"]
