@@ -1,0 +1,131 @@
+[gd_scene load_steps=9 format=3 uid="uid://caihfgpu87c5o"]
+
+[ext_resource type="Script" uid="uid://p31pqne54mcv" path="res://HomeScreenScript.gd" id="1_nj0r8"]
+[ext_resource type="Texture2D" uid="uid://ccxyj4inyh5ge" path="res://Textures/tortuga_static.png" id="2_5ktac"]
+[ext_resource type="Script" uid="uid://3rhaeqv2awu" path="res://Scenes/test_At/start_button_container.gd" id="3_4o7xg"]
+[ext_resource type="Texture2D" uid="uid://6il42pqq7n8n" path="res://Textures/normal_button.png" id="4_f5k4b"]
+[ext_resource type="Script" uid="uid://b6ua6hvcbq1uv" path="res://Scenes/test_At/exit_button_container.gd" id="5_1jx5i"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_luai5"]
+font_size = 100
+font_color = Color(0.3137255, 0.4117647, 0.18431373, 1)
+outline_size = 20
+
+[sub_resource type="LabelSettings" id="LabelSettings_scu8h"]
+font_size = 60
+font_color = Color(0.31228334, 0.41, 0.1845, 1)
+outline_size = 16
+
+[sub_resource type="LabelSettings" id="LabelSettings_kpxnj"]
+font_size = 60
+font_color = Color(0.3137255, 0.4117647, 0.18431373, 1)
+outline_size = 16
+
+[node name="Test_At - Control" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Screen Container - Control" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Home Screen - Control" type="Control" parent="Screen Container - Control"]
+layout_mode = 1
+anchor_right = 18.0
+anchor_bottom = 32.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_nj0r8")
+
+[node name="ColorRect" type="ColorRect" parent="Screen Container - Control/Home Screen - Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.45714, 0.57, 0.4161, 1)
+
+[node name="Center Container - Control" type="Control" parent="Screen Container - Control/Home Screen - Control"]
+anchors_preset = 0
+offset_right = 720.0
+offset_bottom = 1280.0
+
+[node name="Tortuga" type="TextureRect" parent="Screen Container - Control/Home Screen - Control/Center Container - Control"]
+layout_mode = 0
+offset_left = 472.99997
+offset_top = -29.0
+offset_right = 1497.0
+offset_bottom = 995.0
+rotation = 0.27576202
+scale = Vector2(0.47698888, 0.47698888)
+texture = ExtResource("2_5ktac")
+
+[node name="Title_Stats_Label" type="Label" parent="Screen Container - Control/Home Screen - Control/Center Container - Control"]
+layout_mode = 0
+offset_left = 50.0
+offset_top = 42.0
+offset_right = 818.0
+offset_bottom = 207.0
+text = "Estadistiques"
+label_settings = SubResource("LabelSettings_luai5")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Screen Container - Control/Home Screen - Control/Center Container - Control"]
+layout_mode = 1
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -200.0
+offset_top = 166.0
+offset_right = 250.0
+offset_bottom = 166.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.9, 0.9)
+theme_override_constants/separation = 70
+alignment = 1
+
+[node name="Start Button Container" type="MarginContainer" parent="Screen Container - Control/Home Screen - Control/Center Container - Control/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 0
+script = ExtResource("3_4o7xg")
+
+[node name="Start - Button" type="TextureButton" parent="Screen Container - Control/Home Screen - Control/Center Container - Control/VBoxContainer/Start Button Container"]
+layout_mode = 2
+toggle_mode = true
+texture_normal = ExtResource("4_f5k4b")
+
+[node name="Start-Text" type="Label" parent="Screen Container - Control/Home Screen - Control/Center Container - Control/VBoxContainer/Start Button Container"]
+layout_mode = 2
+text = "BEGIN"
+label_settings = SubResource("LabelSettings_scu8h")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Exit Button Container" type="MarginContainer" parent="Screen Container - Control/Home Screen - Control/Center Container - Control/VBoxContainer"]
+layout_mode = 2
+script = ExtResource("5_1jx5i")
+
+[node name="Exit - Button" type="TextureButton" parent="Screen Container - Control/Home Screen - Control/Center Container - Control/VBoxContainer/Exit Button Container"]
+layout_mode = 2
+toggle_mode = true
+texture_normal = ExtResource("4_f5k4b")
+
+[node name="Exit-Text" type="Label" parent="Screen Container - Control/Home Screen - Control/Center Container - Control/VBoxContainer/Exit Button Container"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "EXIT"
+label_settings = SubResource("LabelSettings_kpxnj")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="button_down" from="Screen Container - Control/Home Screen - Control/Center Container - Control/VBoxContainer/Start Button Container/Start - Button" to="Screen Container - Control/Home Screen - Control/Center Container - Control/VBoxContainer/Start Button Container/Start - Button" method="_on_button_down"]
+[connection signal="button_up" from="Screen Container - Control/Home Screen - Control/Center Container - Control/VBoxContainer/Start Button Container/Start - Button" to="Screen Container - Control/Home Screen - Control/Center Container - Control/VBoxContainer/Start Button Container/Start - Button" method="_on_button_up"]
+[connection signal="pressed" from="Screen Container - Control/Home Screen - Control/Center Container - Control/VBoxContainer/Start Button Container/Start - Button" to="Screen Container - Control/Home Screen - Control/Center Container - Control/VBoxContainer/Start Button Container" method="_on_start__button_pressed"]
+[connection signal="button_down" from="Screen Container - Control/Home Screen - Control/Center Container - Control/VBoxContainer/Exit Button Container/Exit - Button" to="Screen Container - Control/Home Screen - Control/Center Container - Control/VBoxContainer/Exit Button Container/Exit - Button" method="_on_button_down"]
+[connection signal="button_up" from="Screen Container - Control/Home Screen - Control/Center Container - Control/VBoxContainer/Exit Button Container/Exit - Button" to="Screen Container - Control/Home Screen - Control/Center Container - Control/VBoxContainer/Exit Button Container/Exit - Button" method="_on_button_up"]
+[connection signal="pressed" from="Screen Container - Control/Home Screen - Control/Center Container - Control/VBoxContainer/Exit Button Container/Exit - Button" to="Screen Container - Control/Home Screen - Control/Center Container - Control/VBoxContainer/Exit Button Container" method="_on_exit__button_pressed"]
