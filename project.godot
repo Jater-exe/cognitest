@@ -15,10 +15,19 @@ run/main_scene="uid://ceaybyflkcb1m"
 config/features=PackedStringArray("4.5", "GL Compatibility")
 config/icon="res://icon.svg"
 
+[audio]
+
+driver/enable_input=true
+driver/mix_rate=16000
+
 [display]
 
 window/size/viewport_width=720
 window/size/viewport_height=1280
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/godot_whisper/plugin.cfg")
 
 [rendering]
 
