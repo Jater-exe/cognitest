@@ -30,4 +30,4 @@ func _on_test_fa_texture_button_up() -> void:
 	tween.tween_property(self, "scale", Vector2.ONE, anim_duration).set_ease(Tween.EASE_OUT)
 
 func _on_test_fa_texture_pressed() -> void:
-	get_tree().change_scene_to_file("res://Scenes/Home_Screen/main___control.tscn")
+	get_tree().change_scene_to_file("res://Scenes/test_FA/test_FA_control.tscn")
