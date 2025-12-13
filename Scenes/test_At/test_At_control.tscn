@@ -7,7 +7,7 @@
 [ext_resource type="Script" uid="uid://b6ua6hvcbq1uv" path="res://Scenes/test_At/exit_button_container.gd" id="5_0fsqh"]
 [ext_resource type="Texture2D" uid="uid://ccxyj4inyh5ge" path="res://Textures/tortuga_static.png" id="6_05jk7"]
 [ext_resource type="Script" uid="uid://bvdw1phsy2flp" path="res://addons/godot_whisper/capture_stream_to_text.gd" id="7_j0u1u"]
-[ext_resource type="WhisperResource" uid="uid://cj0his1lhs4lq" path="res://addons/godot_whisper/models/ggml-base.bin" id="7_xse0h"]
+[ext_resource type="WhisperResource" uid="uid://cqd253a46w0gd" path="res://addons/godot_whisper/models/ggml-small.bin" id="7_xse0h"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_luai5"]
 font_size = 120
@@ -136,7 +136,6 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="CaptureStreamToText" type="SpeechToText" parent="."]
-language = 4
 language_model = ExtResource("7_xse0h")
 script = ExtResource("7_j0u1u")
 metadata/_custom_type_script = "uid://bvdw1phsy2flp"

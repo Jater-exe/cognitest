@@ -1,6 +1,9 @@
 extends AnimationPlayer
 
+@onready var animation_player: AnimationPlayer = $AnimationTitle
+
 func _ready() -> void:
-	# Since the script is attached to the AnimationPlayer node,
-	# we can call methods on 'self' (the node itself).
-	play("Idle_Title_Animation")
+	if is_instance_valid(animation_player):
+		animation_player.call_deferred("play", "Idle_Title_Animation") 
+	else:
+		push_error("AnimationPlayer reference is invalid!")
