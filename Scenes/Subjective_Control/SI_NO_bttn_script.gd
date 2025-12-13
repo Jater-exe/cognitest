@@ -12,7 +12,7 @@ var lista_preguntas = [
 	"He tingut problemes per prendre una decisió que abans no m’hauria costat",
 	"He tingut dificultats per planificar el meu dia",	
 	"He sentit sensació de nebulosa mental",
-	"He sentit que penso més lenta avui"
+	"He sentit que penso més lent avui"
 ]
 
 var tipus_preg = [
