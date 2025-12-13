@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://ojuqehhr2kur"]
+[gd_scene load_steps=7 format=3 uid="uid://ojuqehhr2kur"]
 
-[ext_resource type="Texture2D" uid="uid://ct747n361h7pv" path="res://icon.svg" id="1_84rv0"]
+[ext_resource type="Texture2D" uid="uid://ccxyj4inyh5ge" path="res://Textures/tortuga_static.png" id="1_84rv0"]
 [ext_resource type="Texture2D" uid="uid://6il42pqq7n8n" path="res://Textures/normal_button.png" id="2_3fb7c"]
+[ext_resource type="Script" uid="uid://bsarq7d8sm3it" path="res://Scenes/Objective_Control/return_margin.gd" id="3_3fb7c"]
 [ext_resource type="Texture2D" uid="uid://ck5polm18n315" path="res://Textures/button.png" id="3_10gsx"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_p3ucc"]
@@ -44,12 +45,14 @@ anchors_preset = 0
 offset_right = 720.0
 offset_bottom = 1280.0
 
-[node name="Title" type="TextureRect" parent="Objective Container - Control/Objective Screen - Control/Center Container - Control"]
+[node name="Tortuga" type="TextureRect" parent="Objective Container - Control/Objective Screen - Control/Center Container - Control"]
 layout_mode = 0
-offset_left = 265.0
-offset_top = 41.0
-offset_right = 665.0
-offset_bottom = 169.0
+offset_left = 475.99997
+offset_top = -115.99999
+offset_right = 1500.0
+offset_bottom = 908.0
+rotation = 0.37231505
+scale = Vector2(0.34813032, 0.34813032)
 texture = ExtResource("1_84rv0")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Objective Container - Control/Objective Screen - Control/Center Container - Control"]
@@ -77,7 +80,7 @@ layout_mode = 2
 toggle_mode = true
 texture_normal = ExtResource("2_3fb7c")
 
-[node name="Label" type="Label" parent="Objective Container - Control/Objective Screen - Control/Center Container - Control/VBoxContainer/TestFAMargin"]
+[node name="TestFALabel" type="Label" parent="Objective Container - Control/Objective Screen - Control/Center Container - Control/VBoxContainer/TestFAMargin"]
 layout_mode = 2
 text = "Fluència
 Alternant"
@@ -85,26 +88,61 @@ label_settings = SubResource("LabelSettings_p3ucc")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="TextureButton2" type="TextureButton" parent="Objective Container - Control/Objective Screen - Control/Center Container - Control/VBoxContainer"]
+[node name="TestAtMargin" type="MarginContainer" parent="Objective Container - Control/Objective Screen - Control/Center Container - Control/VBoxContainer"]
 layout_mode = 2
-texture_normal = ExtResource("2_3fb7c")
 
-[node name="TextureButton3" type="TextureButton" parent="Objective Container - Control/Objective Screen - Control/Center Container - Control/VBoxContainer"]
-layout_mode = 2
-texture_normal = ExtResource("2_3fb7c")
-
-[node name="TextureButton4" type="TextureButton" parent="Objective Container - Control/Objective Screen - Control/Center Container - Control/VBoxContainer"]
+[node name="TestAtTexture" type="TextureButton" parent="Objective Container - Control/Objective Screen - Control/Center Container - Control/VBoxContainer/TestAtMargin"]
 layout_mode = 2
 toggle_mode = true
 texture_normal = ExtResource("2_3fb7c")
 
+[node name="TestAtLabel" type="Label" parent="Objective Container - Control/Objective Screen - Control/Center Container - Control/VBoxContainer/TestAtMargin"]
+layout_mode = 2
+text = "Atenció"
+label_settings = SubResource("LabelSettings_p3ucc")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TestMTMargin" type="MarginContainer" parent="Objective Container - Control/Objective Screen - Control/Center Container - Control/VBoxContainer"]
+layout_mode = 2
+
+[node name="TestMTTexture" type="TextureButton" parent="Objective Container - Control/Objective Screen - Control/Center Container - Control/VBoxContainer/TestMTMargin"]
+layout_mode = 2
+toggle_mode = true
+texture_normal = ExtResource("2_3fb7c")
+
+[node name="TestMTLabel" type="Label" parent="Objective Container - Control/Objective Screen - Control/Center Container - Control/VBoxContainer/TestMTMargin"]
+layout_mode = 2
+text = "Memòria
+de treball"
+label_settings = SubResource("LabelSettings_p3ucc")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TestVPMargin" type="MarginContainer" parent="Objective Container - Control/Objective Screen - Control/Center Container - Control/VBoxContainer"]
+layout_mode = 2
+
+[node name="TestVPTexture" type="TextureButton" parent="Objective Container - Control/Objective Screen - Control/Center Container - Control/VBoxContainer/TestVPMargin"]
+layout_mode = 2
+toggle_mode = true
+texture_normal = ExtResource("2_3fb7c")
+
+[node name="TestVPLabel" type="Label" parent="Objective Container - Control/Objective Screen - Control/Center Container - Control/VBoxContainer/TestVPMargin"]
+layout_mode = 2
+text = "Velocitat de
+processament"
+label_settings = SubResource("LabelSettings_p3ucc")
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="ReturnMargin" type="MarginContainer" parent="Objective Container - Control/Objective Screen - Control/Center Container - Control"]
 layout_mode = 0
-offset_left = 43.000008
-offset_top = 34.0
-offset_right = 443.0
-offset_bottom = 234.0
-scale = Vector2(0.75, 0.75)
+offset_left = 52.0
+offset_top = 40.00001
+offset_right = 452.0
+offset_bottom = 240.00002
+scale = Vector2(0.6038792, 0.6038792)
+script = ExtResource("3_3fb7c")
 
 [node name="ReturnTexture" type="TextureButton" parent="Objective Container - Control/Objective Screen - Control/Center Container - Control/ReturnMargin"]
 layout_mode = 2
@@ -129,3 +167,8 @@ anchor_right = 18.0
 anchor_bottom = 32.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[connection signal="button_down" from="Objective Container - Control/Objective Screen - Control/Center Container - Control/ReturnMargin/ReturnTexture" to="Objective Container - Control/Objective Screen - Control/Center Container - Control/ReturnMargin" method="_on_return_texture_button_down"]
+[connection signal="button_up" from="Objective Container - Control/Objective Screen - Control/Center Container - Control/ReturnMargin/ReturnTexture" to="Objective Container - Control/Objective Screen - Control/Center Container - Control/ReturnMargin" method="_on_return_texture_button_up"]
+[connection signal="pressed" from="Objective Container - Control/Objective Screen - Control/Center Container - Control/ReturnMargin/ReturnTexture" to="Objective Container - Control/Objective Screen - Control/Center Container - Control/ReturnMargin" method="_on_return_texture_pressed"]
+[connection signal="ready" from="Objective Container - Control/Objective Screen - Control/Center Container - Control/ReturnMargin/ReturnTexture" to="Objective Container - Control/Objective Screen - Control/Center Container - Control/ReturnMargin" method="_on_return_texture_ready"]
