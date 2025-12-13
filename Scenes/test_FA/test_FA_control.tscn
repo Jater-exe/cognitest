@@ -1,10 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://cy0cjmp877rsx"]
+[gd_scene load_steps=9 format=3 uid="uid://e6x3jg1dtew6"]
 
-[ext_resource type="Script" uid="uid://p31pqne54mcv" path="res://HomeScreenScript.gd" id="1_703xo"]
-[ext_resource type="Script" uid="uid://3rhaeqv2awu" path="res://Scenes/test_At/start_button_container.gd" id="3_luai5"]
-[ext_resource type="Texture2D" uid="uid://6il42pqq7n8n" path="res://Textures/normal_button.png" id="4_hqrpm"]
-[ext_resource type="Script" uid="uid://b6ua6hvcbq1uv" path="res://Scenes/test_At/exit_button_container.gd" id="5_0fsqh"]
-[ext_resource type="Texture2D" uid="uid://ccxyj4inyh5ge" path="res://Textures/tortuga_static.png" id="6_05jk7"]
+[ext_resource type="Script" uid="uid://p31pqne54mcv" path="res://HomeScreenScript.gd" id="1_1wt6b"]
+[ext_resource type="Texture2D" uid="uid://ccxyj4inyh5ge" path="res://Textures/tortuga_static.png" id="2_6h7rn"]
+[ext_resource type="Script" uid="uid://ijqyvx1vvad0" path="res://Scenes/test_FA/start_button_container.gd" id="3_dllyi"]
+[ext_resource type="Texture2D" uid="uid://6il42pqq7n8n" path="res://Textures/normal_button.png" id="4_pdb38"]
+[ext_resource type="Script" uid="uid://bbouno7tj5qe7" path="res://Scenes/test_FA/exit_button_container.gd" id="5_32eej"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_luai5"]
 font_size = 120
@@ -21,7 +21,7 @@ font_size = 60
 font_color = Color(0.3137255, 0.4117647, 0.18431373, 1)
 outline_size = 16
 
-[node name="Test_At - Control" type="Control"]
+[node name="Test_FA - Control" type="Control"]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
@@ -38,7 +38,7 @@ anchor_right = 18.0
 anchor_bottom = 32.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_703xo")
+script = ExtResource("1_1wt6b")
 
 [node name="ColorRect" type="ColorRect" parent="Screen Container - Control/Home Screen - Control"]
 layout_mode = 1
@@ -54,24 +54,27 @@ anchors_preset = 0
 offset_right = 720.0
 offset_bottom = 1280.0
 
-[node name="Title_AtC_Label" type="Label" parent="Screen Container - Control/Home Screen - Control/Center Container - Control"]
-layout_mode = 0
-offset_left = 138.0
-offset_top = 80.0
-offset_right = 576.0
-offset_bottom = 245.0
-text = "Atenció"
-label_settings = SubResource("LabelSettings_luai5")
-
 [node name="Tortuga" type="TextureRect" parent="Screen Container - Control/Home Screen - Control/Center Container - Control"]
 layout_mode = 0
 offset_left = 367.0
-offset_top = 47.0
+offset_top = 155.0
 offset_right = 1391.0
-offset_bottom = 1071.0
+offset_bottom = 1179.0
 rotation = 0.27576202
 scale = Vector2(0.47698888, 0.47698888)
-texture = ExtResource("6_05jk7")
+texture = ExtResource("2_6h7rn")
+
+[node name="Title_FAC_Label" type="Label" parent="Screen Container - Control/Home Screen - Control/Center Container - Control"]
+layout_mode = 0
+offset_left = 78.0
+offset_top = 52.0
+offset_right = 628.0
+offset_bottom = 385.0
+text = "Fluència
+Alternant"
+label_settings = SubResource("LabelSettings_luai5")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Screen Container - Control/Home Screen - Control/Center Container - Control"]
 layout_mode = 1
@@ -92,12 +95,12 @@ alignment = 1
 [node name="Start Button Container" type="MarginContainer" parent="Screen Container - Control/Home Screen - Control/Center Container - Control/VBoxContainer"]
 layout_mode = 2
 theme_override_constants/margin_left = 0
-script = ExtResource("3_luai5")
+script = ExtResource("3_dllyi")
 
 [node name="Start - Button" type="TextureButton" parent="Screen Container - Control/Home Screen - Control/Center Container - Control/VBoxContainer/Start Button Container"]
 layout_mode = 2
 toggle_mode = true
-texture_normal = ExtResource("4_hqrpm")
+texture_normal = ExtResource("4_pdb38")
 
 [node name="Start-Text" type="Label" parent="Screen Container - Control/Home Screen - Control/Center Container - Control/VBoxContainer/Start Button Container"]
 layout_mode = 2
@@ -108,12 +111,12 @@ vertical_alignment = 1
 
 [node name="Exit Button Container" type="MarginContainer" parent="Screen Container - Control/Home Screen - Control/Center Container - Control/VBoxContainer"]
 layout_mode = 2
-script = ExtResource("5_0fsqh")
+script = ExtResource("5_32eej")
 
 [node name="Exit - Button" type="TextureButton" parent="Screen Container - Control/Home Screen - Control/Center Container - Control/VBoxContainer/Exit Button Container"]
 layout_mode = 2
 toggle_mode = true
-texture_normal = ExtResource("4_hqrpm")
+texture_normal = ExtResource("4_pdb38")
 
 [node name="Exit-Text" type="Label" parent="Screen Container - Control/Home Screen - Control/Center Container - Control/VBoxContainer/Exit Button Container"]
 layout_mode = 2
