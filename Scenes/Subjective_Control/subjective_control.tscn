@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://cpxmgillrjwdc"]
+[gd_scene load_steps=9 format=3 uid="uid://cpxmgillrjwdc"]
 
 [ext_resource type="Script" uid="uid://p31pqne54mcv" path="res://HomeScreenScript.gd" id="1_0lhpt"]
 [ext_resource type="Texture2D" uid="uid://ct747n361h7pv" path="res://icon.svg" id="2_5puma"]
+[ext_resource type="Script" uid="uid://bibm4m0odg4l7" path="res://Scenes/Subjective_Control/SI_NO_bttn_script.gd" id="3_4rfdj"]
 [ext_resource type="Texture2D" uid="uid://6il42pqq7n8n" path="res://Textures/normal_button.png" id="3_ylcpc"]
 [ext_resource type="LabelSettings" uid="uid://cfn6qw0b1wpa1" path="res://Scenes/Subjective_Control/SI_NO_bttn_txt.tres" id="4_176wn"]
 
@@ -20,6 +21,8 @@ cache/0/50/0/scale = 1.0
 [sub_resource type="LabelSettings" id="LabelSettings_p26uw"]
 font = SubResource("FontFile_cggox")
 font_size = 50
+
+[sub_resource type="Theme" id="Theme_28c1q"]
 
 [node name="Main - Control" type="Control"]
 layout_mode = 3
@@ -77,8 +80,10 @@ grow_vertical = 2
 scale = Vector2(0.9, 0.9)
 theme_override_constants/separation = 100
 alignment = 1
+script = ExtResource("3_4rfdj")
 
 [node name="Label" type="Label" parent="Screen Container - Control/Home Screen - Control/Center Container - Control/VBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 text = "He anat a un lloc de l’habitació i, quan hi he arribat, no he recordat què hi anava a fer"
 label_settings = SubResource("LabelSettings_p26uw")
@@ -97,14 +102,14 @@ size_flags_horizontal = 0
 size_flags_vertical = 8
 theme_override_constants/separation = 65
 
-[node name="TextureButton2" type="TextureButton" parent="Screen Container - Control/Home Screen - Control/Center Container - Control/VBoxContainer/MarginContainer/HBoxContainer"]
+[node name="BOTONO" type="TextureButton" parent="Screen Container - Control/Home Screen - Control/Center Container - Control/VBoxContainer/MarginContainer/HBoxContainer"]
 custom_minimum_size = Vector2(175, 100)
 layout_mode = 2
 texture_normal = ExtResource("3_ylcpc")
 ignore_texture_size = true
 stretch_mode = 0
 
-[node name="Label2" type="Label" parent="Screen Container - Control/Home Screen - Control/Center Container - Control/VBoxContainer/MarginContainer/HBoxContainer/TextureButton2"]
+[node name="Label2" type="Label" parent="Screen Container - Control/Home Screen - Control/Center Container - Control/VBoxContainer/MarginContainer/HBoxContainer/BOTONO"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -120,14 +125,15 @@ label_settings = ExtResource("4_176wn")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="TextureButton3" type="TextureButton" parent="Screen Container - Control/Home Screen - Control/Center Container - Control/VBoxContainer/MarginContainer/HBoxContainer"]
+[node name="BOTOSI" type="TextureButton" parent="Screen Container - Control/Home Screen - Control/Center Container - Control/VBoxContainer/MarginContainer/HBoxContainer"]
 custom_minimum_size = Vector2(175, 100)
 layout_mode = 2
+theme = SubResource("Theme_28c1q")
 texture_normal = ExtResource("3_ylcpc")
 ignore_texture_size = true
 stretch_mode = 0
 
-[node name="Label" type="Label" parent="Screen Container - Control/Home Screen - Control/Center Container - Control/VBoxContainer/MarginContainer/HBoxContainer/TextureButton3"]
+[node name="Label" type="Label" parent="Screen Container - Control/Home Screen - Control/Center Container - Control/VBoxContainer/MarginContainer/HBoxContainer/BOTOSI"]
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
