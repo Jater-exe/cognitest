@@ -1,11 +1,27 @@
-[gd_scene load_steps=8 format=3 uid="uid://5fsn5x707g1i"]
+[gd_scene load_steps=10 format=3 uid="uid://5fsn5x707g1i"]
 
 [ext_resource type="Script" uid="uid://p31pqne54mcv" path="res://HomeScreenScript.gd" id="1_vjsdi"]
 [ext_resource type="Texture2D" uid="uid://ct747n361h7pv" path="res://icon.svg" id="2_3uva4"]
 [ext_resource type="Script" uid="uid://dndkplqqje7eu" path="res://Scenes/Home_Screen/objective_button_container.gd" id="3_6irpr"]
 [ext_resource type="Texture2D" uid="uid://6il42pqq7n8n" path="res://Textures/normal_button.png" id="4_aqlsi"]
-[ext_resource type="Script" uid="uid://drsyl0drtyb7g" path="res://Scenes/objective___button.gd" id="5_d1eu7"]
+[ext_resource type="Script" uid="uid://cb8empew1vb8f" path="res://Scenes/Home_Screen/subjective_button_container.gd" id="6_3uva4"]
 [ext_resource type="Texture2D" uid="uid://ccxyj4inyh5ge" path="res://Textures/tortuga_static.png" id="6_oo1vc"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_3uva4"]
+font_size = 110
+font_color = Color(0.2592, 0.36, 0.26592, 1)
+outline_size = 23
+
+[sub_resource type="GDScript" id="GDScript_vjsdi"]
+script/source = "extends TextureButton
+
+func _ready():
+	pass
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	pass
+"
 
 [sub_resource type="LabelSettings" id="LabelSettings_scu8h"]
 font_size = 40
@@ -45,7 +61,19 @@ anchors_preset = 0
 offset_right = 720.0
 offset_bottom = 1280.0
 
+[node name="Title Label" type="Label" parent="Screen Container - Control/Home Screen - Control/Center Container - Control"]
+layout_mode = 0
+offset_left = 36.0
+offset_top = 54.0
+offset_right = 693.0
+offset_bottom = 219.0
+text = "COGNITEST"
+label_settings = SubResource("LabelSettings_3uva4")
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="Title" type="TextureRect" parent="Screen Container - Control/Home Screen - Control/Center Container - Control"]
+visible = false
 layout_mode = 0
 offset_left = 160.0
 offset_top = 77.0
@@ -78,7 +106,7 @@ script = ExtResource("3_6irpr")
 layout_mode = 2
 toggle_mode = true
 texture_normal = ExtResource("4_aqlsi")
-script = ExtResource("5_d1eu7")
+script = SubResource("GDScript_vjsdi")
 
 [node name="RichTextLabel" type="Label" parent="Screen Container - Control/Home Screen - Control/Center Container - Control/VBoxContainer/Objective Button Container"]
 layout_mode = 2
@@ -89,12 +117,13 @@ vertical_alignment = 1
 
 [node name="Subjective Button Container" type="MarginContainer" parent="Screen Container - Control/Home Screen - Control/Center Container - Control/VBoxContainer"]
 layout_mode = 2
+script = ExtResource("6_3uva4")
 
 [node name="Subjective - Button" type="TextureButton" parent="Screen Container - Control/Home Screen - Control/Center Container - Control/VBoxContainer/Subjective Button Container"]
 layout_mode = 2
 toggle_mode = true
 texture_normal = ExtResource("4_aqlsi")
-script = ExtResource("5_d1eu7")
+script = SubResource("GDScript_vjsdi")
 
 [node name="RichTextLabel" type="Label" parent="Screen Container - Control/Home Screen - Control/Center Container - Control/VBoxContainer/Subjective Button Container"]
 layout_mode = 2
@@ -110,7 +139,7 @@ layout_mode = 2
 layout_mode = 2
 toggle_mode = true
 texture_normal = ExtResource("4_aqlsi")
-script = ExtResource("5_d1eu7")
+script = SubResource("GDScript_vjsdi")
 
 [node name="RichTextLabel" type="Label" parent="Screen Container - Control/Home Screen - Control/Center Container - Control/VBoxContainer/Tests Button Container"]
 layout_mode = 2
@@ -122,9 +151,9 @@ vertical_alignment = 1
 [node name="Tortuga" type="TextureRect" parent="Screen Container - Control/Home Screen - Control"]
 layout_mode = 0
 offset_left = 471.0
-offset_top = 19.0
+offset_top = 29.999992
 offset_right = 1495.0
-offset_bottom = 1043.0
+offset_bottom = 1054.0
 rotation = 0.27576202
 scale = Vector2(0.35, 0.35)
 texture = ExtResource("6_oo1vc")
@@ -134,5 +163,6 @@ texture = ExtResource("6_oo1vc")
 [connection signal="pressed" from="Screen Container - Control/Home Screen - Control/Center Container - Control/VBoxContainer/Objective Button Container/Objective - Button" to="Screen Container - Control/Home Screen - Control/Center Container - Control/VBoxContainer/Objective Button Container" method="_on_objective__button_pressed"]
 [connection signal="button_down" from="Screen Container - Control/Home Screen - Control/Center Container - Control/VBoxContainer/Subjective Button Container/Subjective - Button" to="Screen Container - Control/Home Screen - Control/Center Container - Control/VBoxContainer/Subjective Button Container/Subjective - Button" method="_on_button_down"]
 [connection signal="button_up" from="Screen Container - Control/Home Screen - Control/Center Container - Control/VBoxContainer/Subjective Button Container/Subjective - Button" to="Screen Container - Control/Home Screen - Control/Center Container - Control/VBoxContainer/Subjective Button Container/Subjective - Button" method="_on_button_up"]
+[connection signal="pressed" from="Screen Container - Control/Home Screen - Control/Center Container - Control/VBoxContainer/Subjective Button Container/Subjective - Button" to="Screen Container - Control/Home Screen - Control/Center Container - Control/VBoxContainer/Subjective Button Container" method="_on_subjective__button_pressed"]
 [connection signal="button_down" from="Screen Container - Control/Home Screen - Control/Center Container - Control/VBoxContainer/Tests Button Container/Tests - Button" to="Screen Container - Control/Home Screen - Control/Center Container - Control/VBoxContainer/Tests Button Container/Tests - Button" method="_on_button_down"]
 [connection signal="button_up" from="Screen Container - Control/Home Screen - Control/Center Container - Control/VBoxContainer/Tests Button Container/Tests - Button" to="Screen Container - Control/Home Screen - Control/Center Container - Control/VBoxContainer/Tests Button Container/Tests - Button" method="_on_button_up"]
