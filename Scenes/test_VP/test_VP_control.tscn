@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://io2ymodytkb4"]
+[gd_scene load_steps=9 format=3 uid="uid://io2ymodytkb4"]
 
 [ext_resource type="Script" uid="uid://p31pqne54mcv" path="res://HomeScreenScript.gd" id="1_wyvly"]
 [ext_resource type="Texture2D" uid="uid://ct747n361h7pv" path="res://icon.svg" id="2_chsi1"]
 [ext_resource type="Texture2D" uid="uid://6il42pqq7n8n" path="res://Textures/normal_button.png" id="3_81jqw"]
 [ext_resource type="Script" uid="uid://b368ifd5b4wb4" path="res://Scenes/test_VP/start_button_script.gd" id="3_kpxnj"]
+[ext_resource type="Script" uid="uid://c0262h2hrf70" path="res://Scenes/test_VP/exit_button_script.gd" id="5_g4317"]
 [ext_resource type="Texture2D" uid="uid://ccxyj4inyh5ge" path="res://Textures/tortuga_static.png" id="5_q36if"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_scu8h"]
@@ -12,6 +13,9 @@ font_color = Color(0.31228334, 0.41, 0.1845, 1)
 outline_size = 11
 
 [sub_resource type="LabelSettings" id="LabelSettings_kpxnj"]
+font_size = 30
+font_color = Color(0.3137255, 0.4117647, 0.18431373, 1)
+outline_size = 11
 
 [node name="Test_VP - Control" type="Control"]
 layout_mode = 3
@@ -79,7 +83,6 @@ script = ExtResource("3_kpxnj")
 layout_mode = 2
 toggle_mode = true
 texture_normal = ExtResource("3_81jqw")
-script = ExtResource("3_kpxnj")
 
 [node name="Start-Text" type="Label" parent="Screen Container - Control/Home Screen - Control/Center Container - Control/VBoxContainer/Start Button Container"]
 layout_mode = 2
@@ -90,7 +93,7 @@ vertical_alignment = 1
 
 [node name="Exit Button Container" type="MarginContainer" parent="Screen Container - Control/Home Screen - Control/Center Container - Control/VBoxContainer"]
 layout_mode = 2
-script = ExtResource("3_kpxnj")
+script = ExtResource("5_g4317")
 
 [node name="Exit - Button" type="TextureButton" parent="Screen Container - Control/Home Screen - Control/Center Container - Control/VBoxContainer/Exit Button Container"]
 layout_mode = 2
@@ -120,4 +123,4 @@ texture = ExtResource("5_q36if")
 [connection signal="pressed" from="Screen Container - Control/Home Screen - Control/Center Container - Control/VBoxContainer/Start Button Container/Start - Button" to="Screen Container - Control/Home Screen - Control/Center Container - Control/VBoxContainer/Start Button Container" method="_on_start__button_pressed"]
 [connection signal="button_down" from="Screen Container - Control/Home Screen - Control/Center Container - Control/VBoxContainer/Exit Button Container/Exit - Button" to="Screen Container - Control/Home Screen - Control/Center Container - Control/VBoxContainer/Exit Button Container/Exit - Button" method="_on_button_down"]
 [connection signal="button_up" from="Screen Container - Control/Home Screen - Control/Center Container - Control/VBoxContainer/Exit Button Container/Exit - Button" to="Screen Container - Control/Home Screen - Control/Center Container - Control/VBoxContainer/Exit Button Container/Exit - Button" method="_on_button_up"]
-[connection signal="pressed" from="Screen Container - Control/Home Screen - Control/Center Container - Control/VBoxContainer/Exit Button Container/Exit - Button" to="Screen Container - Control/Home Screen - Control" method="_on_exit__button_pressed"]
+[connection signal="pressed" from="Screen Container - Control/Home Screen - Control/Center Container - Control/VBoxContainer/Exit Button Container/Exit - Button" to="Screen Container - Control/Home Screen - Control/Center Container - Control/VBoxContainer/Exit Button Container" method="_on_exit__button_pressed"]
