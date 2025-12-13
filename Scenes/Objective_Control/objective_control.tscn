@@ -7,14 +7,14 @@
 [ext_resource type="Script" uid="uid://drigglidbmka2" path="res://Scenes/Objective_Control/script_testvp.gd" id="3_gqcsa"]
 [ext_resource type="Script" uid="uid://b51hy3d0ar5xa" path="res://Scenes/Objective_Control/script_testat.gd" id="4_7ae4f"]
 [ext_resource type="Script" uid="uid://buqwp28f4oyna" path="res://Scenes/Objective_Control/script_testmt.gd" id="5_366xq"]
-[ext_resource type="Texture2D" uid="uid://hna0wv1k32c6" path="res://Textures/button_pink.png" id="8_366xq"]
+[ext_resource type="Texture2D" uid="uid://b5kcv0c15cudv" path="res://Textures/button_return_control.png" id="8_366xq"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_p3ucc"]
 font_size = 50
 font_color = Color(0, 0, 0, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_3dh8w"]
-font_size = 40
+font_size = 32
 font_color = Color(0, 0, 0, 1)
 
 [node name="Objective - Control" type="Control"]
