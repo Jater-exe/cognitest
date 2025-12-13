@@ -103,16 +103,6 @@ func _guardar_en_disco(datos: Dictionary):
 		archivo.close()
 		print("Base de datos actualizada con nuevo registro en user://resultados_test.json.")
 
-func _ready():
-	# 1. Cargar la primera pregunta nada más empezar
-	actualizar_interfaz()
-	
-	# 2. Conectar las señales de los botones
-	# Esto hace que cuando se pulse, se ejecute la función indicada
-	boton_si.pressed.connect(_cuando_pulsa_si)
-	boton_no.pressed.connect(_cuando_pulsa_no)
-	boton_return.pressed.connect(_return_home_screen)
-
 # Esta función se encarga de cambiar el texto
 func actualizar_interfaz():
 	# Verificamos si todavía quedan preguntas
@@ -169,8 +159,6 @@ func fin_del_juego():
 	stats_preguntes.append("MEMORIA: " + str(cont_mem))
 	stats_preguntes.append("FLU_VERB: " + str(cont_flu_verb))
 	stats_preguntes.append("FUNC_EXEC: " + str(cont_func_exec))
-	
-	
 
 	# Ocultamos los botones para que no puedan seguir pulsando
 	boton_si.visible = false
@@ -178,5 +166,43 @@ func fin_del_juego():
 	boton_return.visible = true;
 	
 	guardar_nuevo_resultado(respuestas_guardadas, stats_preguntes)
+
+
+
+#ANIMACIONS 
+@export var shrink_scale: float = 0.95
+@export var anim_duration: float = 0.1
+
+var tween: Tween = null
+var center_pivot: Vector2
+
+func _on_texture_button_down(boton: TextureButton):
+	# CRÍTICO: Calculamos el centro del botón para que se encoja hacia el medio
+	boton.pivot_offset = boton.size / 2
 	
-	# Aquí podrías cambiar de escena o mostrar resultados
+	var tween = create_tween()
+	# Animamos la escala hacia abajo (0.9, 0.9)
+	tween.tween_property(boton, "scale", Vector2(shrink_scale, shrink_scale), anim_duration).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
+
+func _on_texture_button_up(boton: TextureButton):
+	# No hace falta recalcular el pivote aquí, ya lo tiene
+	var tween = create_tween()
+	# Animamos la escala de vuelta a la normalidad (1.0, 1.0)
+	tween.tween_property(boton, "scale", Vector2.ONE, anim_duration).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
+
+func _ready():
+	# 1. Cargar la primera pregunta nada más empezar
+	actualizar_interfaz()
+	
+	# 2. Conectar las señales de los botones
+	# Esto hace que cuando se pulse, se ejecute la función indicada
+	boton_si.button_down.connect(_on_texture_button_down.bind(boton_si))
+	boton_si.button_up.connect(_on_texture_button_up.bind(boton_si))
+	boton_si.pressed.connect(_cuando_pulsa_si)
+	
+	boton_no.button_down.connect(_on_texture_button_down.bind(boton_no))
+	boton_no.button_up.connect(_on_texture_button_up.bind(boton_no))
+	boton_no.pressed.connect(_cuando_pulsa_no)
+	
+	
+	boton_return.pressed.connect(_return_home_screen)
