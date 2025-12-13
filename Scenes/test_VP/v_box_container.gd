@@ -7,6 +7,9 @@ const BUTTON_SCENE = preload("res://Scenes/test_VP/NumberButton.tscn") # Assume 
 
 @onready var top_row_container: HBoxContainer = $HBoxContainer
 @onready var bottom_row_container: HBoxContainer = $HBoxContainer2
+@onready var last_num: int = 0
+var total_wait_time: float = 0
+var current_wait_time: float = 0
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	initialize_random_seed()
@@ -43,8 +46,6 @@ func create_numbered_buttons(numbers: Array[int], target_container: HBoxContaine
 		var button_instance = BUTTON_SCENE.instantiate()
 		var button_label: Label = button_instance.find_child("NumLabel")
 		button_label.text = str(number)
-		
-		
 		if button_instance is Button:
 			button_instance.text = str(number)
 		
@@ -56,14 +57,14 @@ func create_numbered_buttons(numbers: Array[int], target_container: HBoxContaine
 			Callable(self, "_on_number_button_pressed").bind(number)
 		)
 func _on_number_button_pressed(number_value: int) -> void:
-	
-	print("Button pressed! The value is: ", number_value)
-	
-	# Example: Check if the number is even
-	if number_value % 2 == 0:
-		print("This is an EVEN number.")
-	else:
-		print("This is an ODD number.")
+	print(number_value)
+	print(total_wait_time)
+	if number_value == last_num+1:
+		last_num = number_value
+		total_wait_time += current_wait_time
+		current_wait_time = 0
+		if number_value == 10:
+			get_tree().change_scene_to_file("res://Scenes/test_VP/test_VP_control.tscn")
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	pass
+	current_wait_time += delta
