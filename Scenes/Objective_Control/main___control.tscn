@@ -72,13 +72,15 @@ outline_size = 11
 layout_mode = 3
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_right = -680.0
-offset_bottom = -1240.0
+offset_right = -670.0
+offset_bottom = -1233.0
 
 [node name="Screen Container - Control" type="Control" parent="."]
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+layout_mode = 1
+anchor_right = 14.43
+anchor_bottom = 27.251001
+offset_right = -681.5
+offset_bottom = -1240.7971
 
 [node name="Home Screen - Control" type="Control" parent="Screen Container - Control"]
 layout_mode = 1
