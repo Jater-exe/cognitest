@@ -1,10 +1,13 @@
-[gd_scene load_steps=8 format=3 uid="uid://ojuqehhr2kur"]
+[gd_scene load_steps=11 format=3 uid="uid://ojuqehhr2kur"]
 
 [ext_resource type="Texture2D" uid="uid://ccxyj4inyh5ge" path="res://Textures/tortuga_static.png" id="1_84rv0"]
 [ext_resource type="Texture2D" uid="uid://6il42pqq7n8n" path="res://Textures/normal_button.png" id="2_3fb7c"]
+[ext_resource type="Script" uid="uid://g0o2s20hnovh" path="res://Scenes/Objective_Control/script_testfa.gd" id="2_gqcsa"]
 [ext_resource type="Script" uid="uid://b45b5u1py6l8u" path="res://Scenes/Objective_Control/script_return.gd" id="3_3fb7c"]
 [ext_resource type="Texture2D" uid="uid://ck5polm18n315" path="res://Textures/button.png" id="3_10gsx"]
 [ext_resource type="Script" uid="uid://drigglidbmka2" path="res://Scenes/Objective_Control/script_testvp.gd" id="3_gqcsa"]
+[ext_resource type="Script" uid="uid://b51hy3d0ar5xa" path="res://Scenes/Objective_Control/script_testat.gd" id="4_7ae4f"]
+[ext_resource type="Script" uid="uid://buqwp28f4oyna" path="res://Scenes/Objective_Control/script_testmt.gd" id="5_366xq"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_p3ucc"]
 font_size = 50
@@ -75,6 +78,7 @@ alignment = 1
 
 [node name="TestFAMargin" type="MarginContainer" parent="Objective Container - Control/Objective Screen - Control/Center Container - Control/VBoxContainer"]
 layout_mode = 2
+script = ExtResource("2_gqcsa")
 
 [node name="TestFATexture" type="TextureButton" parent="Objective Container - Control/Objective Screen - Control/Center Container - Control/VBoxContainer/TestFAMargin"]
 layout_mode = 2
@@ -91,6 +95,7 @@ vertical_alignment = 1
 
 [node name="TestAtMargin" type="MarginContainer" parent="Objective Container - Control/Objective Screen - Control/Center Container - Control/VBoxContainer"]
 layout_mode = 2
+script = ExtResource("4_7ae4f")
 
 [node name="TestAtTexture" type="TextureButton" parent="Objective Container - Control/Objective Screen - Control/Center Container - Control/VBoxContainer/TestAtMargin"]
 layout_mode = 2
@@ -106,6 +111,7 @@ vertical_alignment = 1
 
 [node name="TestMTMargin" type="MarginContainer" parent="Objective Container - Control/Objective Screen - Control/Center Container - Control/VBoxContainer"]
 layout_mode = 2
+script = ExtResource("5_366xq")
 
 [node name="TestMTTexture" type="TextureButton" parent="Objective Container - Control/Objective Screen - Control/Center Container - Control/VBoxContainer/TestMTMargin"]
 layout_mode = 2
@@ -158,6 +164,15 @@ label_settings = SubResource("LabelSettings_3dh8w")
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[connection signal="button_down" from="Objective Container - Control/Objective Screen - Control/Center Container - Control/VBoxContainer/TestFAMargin/TestFATexture" to="Objective Container - Control/Objective Screen - Control/Center Container - Control/VBoxContainer/TestFAMargin" method="_on_test_fa_texture_button_down"]
+[connection signal="button_up" from="Objective Container - Control/Objective Screen - Control/Center Container - Control/VBoxContainer/TestFAMargin/TestFATexture" to="Objective Container - Control/Objective Screen - Control/Center Container - Control/VBoxContainer/TestFAMargin" method="_on_test_fa_texture_button_up"]
+[connection signal="pressed" from="Objective Container - Control/Objective Screen - Control/Center Container - Control/VBoxContainer/TestFAMargin/TestFATexture" to="Objective Container - Control/Objective Screen - Control/Center Container - Control/VBoxContainer/TestFAMargin" method="_on_test_fa_texture_pressed"]
+[connection signal="button_down" from="Objective Container - Control/Objective Screen - Control/Center Container - Control/VBoxContainer/TestAtMargin/TestAtTexture" to="Objective Container - Control/Objective Screen - Control/Center Container - Control/VBoxContainer/TestAtMargin" method="_on_test_at_texture_button_down"]
+[connection signal="button_up" from="Objective Container - Control/Objective Screen - Control/Center Container - Control/VBoxContainer/TestAtMargin/TestAtTexture" to="Objective Container - Control/Objective Screen - Control/Center Container - Control/VBoxContainer/TestAtMargin" method="_on_test_at_texture_button_up"]
+[connection signal="pressed" from="Objective Container - Control/Objective Screen - Control/Center Container - Control/VBoxContainer/TestAtMargin/TestAtTexture" to="Objective Container - Control/Objective Screen - Control/Center Container - Control/VBoxContainer/TestAtMargin" method="_on_test_at_texture_pressed"]
+[connection signal="button_down" from="Objective Container - Control/Objective Screen - Control/Center Container - Control/VBoxContainer/TestMTMargin/TestMTTexture" to="Objective Container - Control/Objective Screen - Control/Center Container - Control/VBoxContainer/TestMTMargin" method="_on_test_mt_texture_button_down"]
+[connection signal="button_up" from="Objective Container - Control/Objective Screen - Control/Center Container - Control/VBoxContainer/TestMTMargin/TestMTTexture" to="Objective Container - Control/Objective Screen - Control/Center Container - Control/VBoxContainer/TestMTMargin" method="_on_test_mt_texture_button_up"]
+[connection signal="pressed" from="Objective Container - Control/Objective Screen - Control/Center Container - Control/VBoxContainer/TestMTMargin/TestMTTexture" to="Objective Container - Control/Objective Screen - Control/Center Container - Control/VBoxContainer/TestMTMargin" method="_on_test_mt_texture_pressed"]
 [connection signal="button_down" from="Objective Container - Control/Objective Screen - Control/Center Container - Control/VBoxContainer/TestVPMargin/TestVPTexture" to="Objective Container - Control/Objective Screen - Control/Center Container - Control/VBoxContainer/TestVPMargin" method="_on_test_vp_texture_button_down"]
 [connection signal="button_up" from="Objective Container - Control/Objective Screen - Control/Center Container - Control/VBoxContainer/TestVPMargin/TestVPTexture" to="Objective Container - Control/Objective Screen - Control/Center Container - Control/VBoxContainer/TestVPMargin" method="_on_test_vp_texture_button_up"]
 [connection signal="pressed" from="Objective Container - Control/Objective Screen - Control/Center Container - Control/VBoxContainer/TestVPMargin/TestVPTexture" to="Objective Container - Control/Objective Screen - Control/Center Container - Control/VBoxContainer/TestVPMargin" method="_on_test_vp_texture_pressed"]
