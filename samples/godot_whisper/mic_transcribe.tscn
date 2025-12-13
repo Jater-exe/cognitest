@@ -6,7 +6,7 @@
 [ext_resource type="Script" uid="uid://d3d7cfd33rf7l" path="res://samples/godot_whisper/StartButton.gd" id="3_bbt5i"]
 [ext_resource type="Script" uid="uid://ceh0fgoimsadu" path="res://samples/godot_whisper/enable_mic.gd" id="5_4gpdh"]
 [ext_resource type="Script" uid="uid://bvdw1phsy2flp" path="res://addons/godot_whisper/capture_stream_to_text.gd" id="5_c8lup"]
-[ext_resource type="WhisperResource" path="res://addons/godot_whisper/models/ggml-small.bin" id="6_opioy"]
+[ext_resource type="WhisperResource" uid="uid://cqd253a46w0gd" path="res://addons/godot_whisper/models/ggml-small.bin" id="6_opioy"]
 
 [sub_resource type="AudioStreamMicrophone" id="AudioStreamMicrophone_rhq81"]
 
@@ -74,7 +74,6 @@ layout_mode = 2
 text = "Enable Microphone in Project Settings -> audio/driver/enable_input"
 
 [node name="CaptureStreamToText" type="SpeechToText" parent="."]
-language = 4
 language_model = ExtResource("6_opioy")
 script = ExtResource("5_c8lup")
 initial_prompt = "Esto es una transcripción en español de la Península Ibérica."

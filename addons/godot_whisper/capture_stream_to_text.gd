@@ -4,8 +4,6 @@ extends SpeechToText
 
 signal transcribed_msg(is_partial, new_text)
 
-# For Traditional Chinese "以下是普通話的句子。"
-# For Simplified Chinese "以下是普通话的句子。"
 @export var initial_prompt: String
 
 func _get_configuration_warnings():
