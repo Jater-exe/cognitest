@@ -1,10 +1,13 @@
 extends TextureButton
-
+var already_pressed: bool = false
 @export var shrink_scale: float = 0.95
 @export var anim_duration: float = 0.1
+
 const START_TEXTURE = preload("res://Textures/normal_button.png")
 const PAUSE_TEXTURE = preload("res://Textures/disabled_button.png")
-var is_disabled: bool = false
+
+
+
 
 var tween: Tween = null
 var center_pivot: Vector2
@@ -20,7 +23,9 @@ func _ready() -> void:
 		texture_button = START_TEXTURE
 	
 func _on_texture_button_down() -> void:
-	if not is_disabled:
+	var container_script = get_parent().get_parent()
+	var num_label: Label = $NumLabel
+	if not already_pressed and str(container_script.last_num+1) == num_label.text:
 		var new_scale = Vector2(shrink_scale, shrink_scale)
 		
 		if tween:
@@ -30,12 +35,14 @@ func _on_texture_button_down() -> void:
 		tween.tween_property(self, "scale", new_scale, anim_duration).set_ease(Tween.EASE_OUT)
 
 func _on_texture_button_up() -> void:
-	if not is_disabled:
+	var container_script = get_parent().get_parent()
+	var num_label: Label = $NumLabel
+	if not already_pressed and str(container_script.last_num) == num_label.text:
 		if tween:
 			tween.kill()	
 		
 		tween = create_tween()	
 		tween.tween_property(self, "scale", Vector2.ONE, anim_duration).set_ease(Tween.EASE_OUT)
 		
-		is_disabled = true
+		already_pressed = true
 		texture_normal = PAUSE_TEXTURE

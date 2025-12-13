@@ -7,7 +7,7 @@ const BUTTON_SCENE = preload("res://Scenes/test_VP/NumberButton.tscn") # Assume 
 
 @onready var top_row_container: HBoxContainer = $HBoxContainer
 @onready var bottom_row_container: HBoxContainer = $HBoxContainer2
-@onready var last_num: int = 0
+var last_num: int = 0
 var total_wait_time: float = 0
 var current_wait_time: float = 0
 # Called when the node enters the scene tree for the first time.
