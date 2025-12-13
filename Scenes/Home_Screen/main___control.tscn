@@ -1,12 +1,12 @@
-[gd_scene load_steps=15 format=3 uid="uid://ceaybyflkcb1m"]
+[gd_scene load_steps=15 format=3 uid="uid://bqbcaqf7jxyjs"]
 
 [ext_resource type="Script" uid="uid://p31pqne54mcv" path="res://HomeScreenScript.gd" id="1_5g0qx"]
 [ext_resource type="Texture2D" uid="uid://ct747n361h7pv" path="res://icon.svg" id="1_r6nbc"]
-[ext_resource type="Script" uid="uid://d0wyejdcaagv4" path="res://Scenes/Home_Screen/animation_title.gd" id="2_6irpr"]
+[ext_resource type="Script" path="res://Scenes/Home_Screen/animation_title.gd" id="2_6irpr"]
 [ext_resource type="Script" uid="uid://dndkplqqje7eu" path="res://Scenes/Home_Screen/objective_button_container.gd" id="3_6irpr"]
 [ext_resource type="Texture2D" uid="uid://6il42pqq7n8n" path="res://Textures/normal_button.png" id="3_qswn0"]
 [ext_resource type="Texture2D" uid="uid://ccxyj4inyh5ge" path="res://Textures/tortuga_static.png" id="4_scu8h"]
-[ext_resource type="Script" uid="uid://cb8empew1vb8f" path="res://Scenes/Home_Screen/subjective_button_container.gd" id="6_3uva4"]
+[ext_resource type="Script" path="res://Scenes/Home_Screen/subjective_button_container.gd" id="6_3uva4"]
 [ext_resource type="Script" uid="uid://dv2gy5vbibifh" path="res://Scenes/Objective_Control/estadisticas_button_container.gd" id="7_6irpr"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_3uva4"]
@@ -64,9 +64,9 @@ func _process(delta: float) -> void:
 "
 
 [sub_resource type="LabelSettings" id="LabelSettings_scu8h"]
-font_size = 40
+font_size = 55
 font_color = Color(0.31228334, 0.41, 0.1845, 1)
-outline_size = 11
+outline_size = 13
 
 [node name="Main - Control" type="Control"]
 layout_mode = 3
@@ -75,6 +75,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 offset_right = -670.0
 offset_bottom = -1233.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="Screen Container - Control" type="Control" parent="."]
 layout_mode = 1
