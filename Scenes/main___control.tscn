@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://b0cakowxxpu62"]
+[gd_scene load_steps=5 format=3 uid="uid://5fsn5x707g1i"]
 
 [ext_resource type="Script" uid="uid://p31pqne54mcv" path="res://HomeScreenScript.gd" id="1_5g0qx"]
-[ext_resource type="Texture2D" uid="uid://ci22wlqmmafcs" path="res://button.png" id="1_l6bai"]
 [ext_resource type="Texture2D" uid="uid://ct747n361h7pv" path="res://icon.svg" id="1_r6nbc"]
+[ext_resource type="Texture2D" uid="uid://6il42pqq7n8n" path="res://Textures/normal_button.png" id="3_qswn0"]
+[ext_resource type="Texture2D" uid="uid://ccxyj4inyh5ge" path="res://Textures/tortuga_static.png" id="4_scu8h"]
 
 [node name="Main - Control" type="Control"]
 layout_mode = 3
@@ -52,24 +53,38 @@ anchor_left = 0.5
 anchor_right = 0.5
 anchor_bottom = 1.0
 offset_left = -200.0
-offset_top = 174.0
-offset_right = 200.0
+offset_top = 166.0
+offset_right = 250.0
+offset_bottom = 166.0
 grow_horizontal = 2
 grow_vertical = 2
+scale = Vector2(0.9, 0.9)
 theme_override_constants/separation = 100
 alignment = 1
 
 [node name="Objective - Button" type="TextureButton" parent="Screen Container - Control/Home Screen - Control/Center Container - Control/VBoxContainer"]
 layout_mode = 2
 toggle_mode = true
-texture_normal = ExtResource("1_l6bai")
+texture_normal = ExtResource("3_qswn0")
 
 [node name="TextureButton2" type="TextureButton" parent="Screen Container - Control/Home Screen - Control/Center Container - Control/VBoxContainer"]
 layout_mode = 2
-texture_normal = ExtResource("1_l6bai")
+texture_normal = ExtResource("3_qswn0")
 
 [node name="TextureButton3" type="TextureButton" parent="Screen Container - Control/Home Screen - Control/Center Container - Control/VBoxContainer"]
 layout_mode = 2
-texture_normal = ExtResource("1_l6bai")
+texture_normal = ExtResource("3_qswn0")
 
+[node name="TextureRect" type="TextureRect" parent="Screen Container - Control/Home Screen - Control"]
+layout_mode = 0
+offset_left = 471.0
+offset_top = 19.0
+offset_right = 1495.0
+offset_bottom = 1043.0
+rotation = 0.27576202
+scale = Vector2(0.35, 0.35)
+texture = ExtResource("4_scu8h")
+
+[connection signal="button_down" from="Screen Container - Control/Home Screen - Control/Center Container - Control/VBoxContainer/Objective - Button" to="Screen Container - Control/Home Screen - Control" method="_on_objective__button_button_down"]
+[connection signal="button_up" from="Screen Container - Control/Home Screen - Control/Center Container - Control/VBoxContainer/Objective - Button" to="Screen Container - Control/Home Screen - Control" method="_on_objective__button_button_up"]
 [connection signal="pressed" from="Screen Container - Control/Home Screen - Control/Center Container - Control/VBoxContainer/Objective - Button" to="Screen Container - Control/Home Screen - Control" method="_on_objective__button_pressed"]
