@@ -204,5 +204,6 @@ func _ready():
 	boton_no.button_up.connect(_on_texture_button_up.bind(boton_no))
 	boton_no.pressed.connect(_cuando_pulsa_no)
 	
-	
+	boton_return.button_down.connect(_on_texture_button_down.bind(boton_return))
+	boton_return.button_up.connect(_on_texture_button_up.bind(boton_return))
 	boton_return.pressed.connect(_return_home_screen)
