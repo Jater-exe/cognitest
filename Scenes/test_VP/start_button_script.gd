@@ -34,3 +34,7 @@ func _on_texture_button_up() -> void:
 
 func _on_start__button_pressed() -> void:
 	get_tree().change_scene_to_file("res://Scenes/test_VP/test_VP.tscn")
+
+
+func _on_exit__button_pressed() -> void:
+	pass # Replace with function body.
