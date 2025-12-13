@@ -6,7 +6,7 @@ extends MarginContainer
 var tween: Tween = null
 var center_pivot: Vector2
 
-func _on_return_texture_ready() -> void:
+func _ready() -> void:
 	center_pivot = size / 2.0
 	pivot_offset = center_pivot
 	scale = Vector2.ONE	
@@ -14,7 +14,8 @@ func _on_return_texture_ready() -> void:
 	if texture_button:
 		texture_button.button_down.connect(_on_return_texture_button_down)
 		texture_button.button_up.connect(_on_return_texture_button_up)
-	
+
+
 func _on_return_texture_button_down() -> void:
 	var new_scale = Vector2(shrink_scale, shrink_scale)
 	
@@ -24,12 +25,14 @@ func _on_return_texture_button_down() -> void:
 	tween = create_tween()	
 	tween.tween_property(self, "scale", new_scale, anim_duration).set_ease(Tween.EASE_OUT)
 
+
 func _on_return_texture_button_up() -> void:
 	if tween:
 		tween.kill()	
 	
 	tween = create_tween()	
 	tween.tween_property(self, "scale", Vector2.ONE, anim_duration).set_ease(Tween.EASE_OUT)
+
 
 func _on_return_texture_pressed() -> void:
 	get_tree().change_scene_to_file("res://Scenes/Home_Screen/main___control.tscn")
