@@ -4,17 +4,17 @@
 [ext_resource type="Texture2D" uid="uid://6il42pqq7n8n" path="res://Textures/normal_button.png" id="2_3fb7c"]
 [ext_resource type="Script" uid="uid://g0o2s20hnovh" path="res://Scenes/Objective_Control/script_testfa.gd" id="2_gqcsa"]
 [ext_resource type="Script" uid="uid://b45b5u1py6l8u" path="res://Scenes/Objective_Control/script_return.gd" id="3_3fb7c"]
-[ext_resource type="Texture2D" uid="uid://ck5polm18n315" path="res://Textures/button.png" id="3_10gsx"]
 [ext_resource type="Script" uid="uid://drigglidbmka2" path="res://Scenes/Objective_Control/script_testvp.gd" id="3_gqcsa"]
 [ext_resource type="Script" uid="uid://b51hy3d0ar5xa" path="res://Scenes/Objective_Control/script_testat.gd" id="4_7ae4f"]
 [ext_resource type="Script" uid="uid://buqwp28f4oyna" path="res://Scenes/Objective_Control/script_testmt.gd" id="5_366xq"]
+[ext_resource type="Texture2D" uid="uid://hna0wv1k32c6" path="res://Textures/button_pink.png" id="8_366xq"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_p3ucc"]
 font_size = 50
 font_color = Color(0, 0, 0, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_3dh8w"]
-font_size = 50
+font_size = 40
 font_color = Color(0, 0, 0, 1)
 
 [node name="Objective - Control" type="Control"]
@@ -147,19 +147,18 @@ vertical_alignment = 1
 layout_mode = 0
 offset_left = 52.0
 offset_top = 40.00001
-offset_right = 452.0
-offset_bottom = 240.00002
-scale = Vector2(0.6038792, 0.6038792)
+offset_right = 292.0
+offset_bottom = 160.00002
 script = ExtResource("3_3fb7c")
 
 [node name="ReturnTexture" type="TextureButton" parent="Objective Container - Control/Objective Screen - Control/Center Container - Control/ReturnMargin"]
 layout_mode = 2
 toggle_mode = true
-texture_normal = ExtResource("3_10gsx")
+texture_normal = ExtResource("8_366xq")
 
 [node name="ReturnLabel" type="Label" parent="Objective Container - Control/Objective Screen - Control/Center Container - Control/ReturnMargin"]
 layout_mode = 2
-text = "Return home"
+text = "Return"
 label_settings = SubResource("LabelSettings_3dh8w")
 horizontal_alignment = 1
 vertical_alignment = 1
