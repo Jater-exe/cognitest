@@ -1,17 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://ddsphoogtjj4r"]
+[gd_scene load_steps=4 format=3 uid="uid://ddsphoogtjj4r"]
 
-[ext_resource type="Script" uid="uid://p31pqne54mcv" path="res://HomeScreenScript.gd" id="1_s8ogb"]
 [ext_resource type="Texture2D" uid="uid://ct747n361h7pv" path="res://icon.svg" id="2_a4vxn"]
-[ext_resource type="Texture2D" uid="uid://6il42pqq7n8n" path="res://Textures/normal_button.png" id="3_prdku"]
-[ext_resource type="Script" uid="uid://drsyl0drtyb7g" path="res://Scenes/objective___button.gd" id="4_srlxs"]
+[ext_resource type="Script" uid="uid://b13ywc44dtbsw" path="res://Scenes/test_VP/v_box_container.gd" id="2_iicdm"]
 [ext_resource type="Texture2D" uid="uid://ccxyj4inyh5ge" path="res://Textures/tortuga_static.png" id="5_lyf5w"]
 
-[sub_resource type="LabelSettings" id="LabelSettings_scu8h"]
-font_size = 30
-font_color = Color(0.31228334, 0.41, 0.1845, 1)
-outline_size = 11
-
-[node name="Main - Control" type="Control"]
+[node name="Test_VP_begun - Control" type="Control"]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
@@ -28,7 +21,6 @@ anchor_right = 18.0
 anchor_bottom = 32.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_s8ogb")
 
 [node name="ColorRect" type="ColorRect" parent="Screen Container - Control/Home Screen - Control"]
 layout_mode = 1
@@ -59,50 +51,21 @@ anchor_left = 0.5
 anchor_right = 0.5
 anchor_bottom = 1.0
 offset_left = -200.0
-offset_top = 166.0
+offset_top = 537.0
 offset_right = 250.0
-offset_bottom = 166.0
+offset_bottom = -239.66675
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.9, 0.9)
 theme_override_constants/separation = 70
 alignment = 1
+script = ExtResource("2_iicdm")
 
-[node name="Objective Button Container" type="MarginContainer" parent="Screen Container - Control/Home Screen - Control/Center Container - Control/VBoxContainer"]
-layout_mode = 2
-theme_override_constants/margin_left = 0
-
-[node name="Objective - Button" type="TextureButton" parent="Screen Container - Control/Home Screen - Control/Center Container - Control/VBoxContainer/Objective Button Container"]
-layout_mode = 2
-toggle_mode = true
-texture_normal = ExtResource("3_prdku")
-script = ExtResource("4_srlxs")
-
-[node name="RichTextLabel" type="Label" parent="Screen Container - Control/Home Screen - Control/Center Container - Control/VBoxContainer/Objective Button Container"]
-layout_mode = 2
-text = "Objective test
-"
-label_settings = SubResource("LabelSettings_scu8h")
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Subjective Button Container" type="MarginContainer" parent="Screen Container - Control/Home Screen - Control/Center Container - Control/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Screen Container - Control/Home Screen - Control/Center Container - Control/VBoxContainer"]
 layout_mode = 2
 
-[node name="Subjective - Button" type="TextureButton" parent="Screen Container - Control/Home Screen - Control/Center Container - Control/VBoxContainer/Subjective Button Container"]
+[node name="HBoxContainer2" type="HBoxContainer" parent="Screen Container - Control/Home Screen - Control/Center Container - Control/VBoxContainer"]
 layout_mode = 2
-toggle_mode = true
-texture_normal = ExtResource("3_prdku")
-script = ExtResource("4_srlxs")
-
-[node name="Tests Button Container" type="MarginContainer" parent="Screen Container - Control/Home Screen - Control/Center Container - Control/VBoxContainer"]
-layout_mode = 2
-
-[node name="Tests - Button" type="TextureButton" parent="Screen Container - Control/Home Screen - Control/Center Container - Control/VBoxContainer/Tests Button Container"]
-layout_mode = 2
-toggle_mode = true
-texture_normal = ExtResource("3_prdku")
-script = ExtResource("4_srlxs")
 
 [node name="Tortuga" type="TextureRect" parent="Screen Container - Control/Home Screen - Control"]
 layout_mode = 0
@@ -113,11 +76,3 @@ offset_bottom = 1043.0
 rotation = 0.27576202
 scale = Vector2(0.35, 0.35)
 texture = ExtResource("5_lyf5w")
-
-[connection signal="button_down" from="Screen Container - Control/Home Screen - Control/Center Container - Control/VBoxContainer/Objective Button Container/Objective - Button" to="Screen Container - Control/Home Screen - Control/Center Container - Control/VBoxContainer/Objective Button Container/Objective - Button" method="_on_button_down"]
-[connection signal="button_up" from="Screen Container - Control/Home Screen - Control/Center Container - Control/VBoxContainer/Objective Button Container/Objective - Button" to="Screen Container - Control/Home Screen - Control/Center Container - Control/VBoxContainer/Objective Button Container/Objective - Button" method="_on_button_up"]
-[connection signal="pressed" from="Screen Container - Control/Home Screen - Control/Center Container - Control/VBoxContainer/Objective Button Container/Objective - Button" to="Screen Container - Control/Home Screen - Control" method="_on_objective__button_pressed"]
-[connection signal="button_down" from="Screen Container - Control/Home Screen - Control/Center Container - Control/VBoxContainer/Subjective Button Container/Subjective - Button" to="Screen Container - Control/Home Screen - Control/Center Container - Control/VBoxContainer/Subjective Button Container/Subjective - Button" method="_on_button_down"]
-[connection signal="button_up" from="Screen Container - Control/Home Screen - Control/Center Container - Control/VBoxContainer/Subjective Button Container/Subjective - Button" to="Screen Container - Control/Home Screen - Control/Center Container - Control/VBoxContainer/Subjective Button Container/Subjective - Button" method="_on_button_up"]
-[connection signal="button_down" from="Screen Container - Control/Home Screen - Control/Center Container - Control/VBoxContainer/Tests Button Container/Tests - Button" to="Screen Container - Control/Home Screen - Control/Center Container - Control/VBoxContainer/Tests Button Container/Tests - Button" method="_on_button_down"]
-[connection signal="button_up" from="Screen Container - Control/Home Screen - Control/Center Container - Control/VBoxContainer/Tests Button Container/Tests - Button" to="Screen Container - Control/Home Screen - Control/Center Container - Control/VBoxContainer/Tests Button Container/Tests - Button" method="_on_button_up"]
