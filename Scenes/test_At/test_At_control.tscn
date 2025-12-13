@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://cy0cjmp877rsx"]
+[gd_scene load_steps=12 format=3 uid="uid://cy0cjmp877rsx"]
 
 [ext_resource type="Script" uid="uid://p31pqne54mcv" path="res://HomeScreenScript.gd" id="1_703xo"]
 [ext_resource type="Script" uid="uid://dexremf32qeyi" path="res://Scenes/test_At/center_container___control.gd" id="2_0fsqh"]
@@ -6,6 +6,8 @@
 [ext_resource type="Texture2D" uid="uid://6il42pqq7n8n" path="res://Textures/normal_button.png" id="4_hqrpm"]
 [ext_resource type="Script" uid="uid://b6ua6hvcbq1uv" path="res://Scenes/test_At/exit_button_container.gd" id="5_0fsqh"]
 [ext_resource type="Texture2D" uid="uid://ccxyj4inyh5ge" path="res://Textures/tortuga_static.png" id="6_05jk7"]
+[ext_resource type="Script" uid="uid://bvdw1phsy2flp" path="res://addons/godot_whisper/capture_stream_to_text.gd" id="7_j0u1u"]
+[ext_resource type="WhisperResource" uid="uid://cqd253a46w0gd" path="res://addons/godot_whisper/models/ggml-small.bin" id="7_xse0h"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_luai5"]
 font_size = 120
@@ -132,6 +134,11 @@ text = "EXIT"
 label_settings = SubResource("LabelSettings_kpxnj")
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="CaptureStreamToText" type="SpeechToText" parent="."]
+language_model = ExtResource("7_xse0h")
+script = ExtResource("7_j0u1u")
+metadata/_custom_type_script = "uid://bvdw1phsy2flp"
 
 [connection signal="button_down" from="Screen Container - Control/Home Screen - Control/Center Container - Control/VBoxContainer/Start Button Container/Start - Button" to="Screen Container - Control/Home Screen - Control/Center Container - Control/VBoxContainer/Start Button Container/Start - Button" method="_on_button_down"]
 [connection signal="button_up" from="Screen Container - Control/Home Screen - Control/Center Container - Control/VBoxContainer/Start Button Container/Start - Button" to="Screen Container - Control/Home Screen - Control/Center Container - Control/VBoxContainer/Start Button Container/Start - Button" method="_on_button_up"]
