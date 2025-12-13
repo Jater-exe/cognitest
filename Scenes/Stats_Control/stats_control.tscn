@@ -70,7 +70,7 @@ offset_left = 50.0
 offset_top = 42.0
 offset_right = 818.0
 offset_bottom = 207.0
-text = "Recomenació"
+text = "Recomanació"
 label_settings = SubResource("LabelSettings_luai5")
 
 [node name="Video Button Container" type="MarginContainer" parent="Screen Container - Control/Home Screen - Control/Center Container - Control"]

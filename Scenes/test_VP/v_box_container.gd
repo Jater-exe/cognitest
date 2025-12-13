@@ -4,7 +4,10 @@ const MIN_VALUE: int = 1
 const MAX_VALUE: int = 10
 const LIST_SIZE: int = 10
 const BUTTON_SCENE = preload("res://Scenes/test_VP/NumberButton.tscn") # Assume you have a reusable button scene
-
+const SAVE_PATH = "res://Scenes/test_VP/test_VP.json"
+const KEY_FLOAT_VALUE = "time_delay"
+# New key for the timestamp
+const KEY_TIMESTAMP = "test_time"
 @onready var top_row_container: HBoxContainer = $HBoxContainer
 @onready var bottom_row_container: HBoxContainer = $HBoxContainer2
 var last_num: int = 0
@@ -64,7 +67,23 @@ func _on_number_button_pressed(number_value: int) -> void:
 		total_wait_time += current_wait_time
 		current_wait_time = 0
 		if number_value == 10:
+			save_float_to_json(total_wait_time)
 			get_tree().change_scene_to_file("res://Scenes/test_VP/test_VP_control.tscn")
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	current_wait_time += delta
+
+
+func save_float_to_json(float_to_save: float) -> void:
+	var current_time_string: String = Time.get_datetime_string_from_system()
+	var save_data: Dictionary = {
+		KEY_FLOAT_VALUE: float_to_save,
+		KEY_TIMESTAMP: current_time_string
+	}
+	var json_string: String = JSON.stringify(save_data, "\t")
+	var file = FileAccess.open(SAVE_PATH, FileAccess.WRITE)
+	if file:
+		file.store_string(json_string)
+		print("Successfully saved float and timestamp to: ", SAVE_PATH)
+	else:
+		print("ERROR: Could not save file at path: ", SAVE_PATH)
