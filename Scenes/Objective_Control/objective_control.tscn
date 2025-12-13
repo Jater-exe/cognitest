@@ -11,11 +11,13 @@
 
 [sub_resource type="LabelSettings" id="LabelSettings_p3ucc"]
 font_size = 50
-font_color = Color(0, 0, 0, 1)
+font_color = Color(0.3137255, 0.4117647, 0.18431373, 1)
+outline_size = 15
 
 [sub_resource type="LabelSettings" id="LabelSettings_3dh8w"]
-font_size = 32
-font_color = Color(0, 0, 0, 1)
+font_size = 40
+font_color = Color(0.3137255, 0.4117647, 0.18431373, 1)
+outline_size = 14
 
 [node name="Objective - Control" type="Control"]
 layout_mode = 3
