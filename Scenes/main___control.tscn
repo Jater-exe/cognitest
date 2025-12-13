@@ -7,7 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://ccxyj4inyh5ge" path="res://Textures/tortuga_static.png" id="4_scu8h"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_scu8h"]
-font_size = 30
+font_size = 40
 font_color = Color(0.31228334, 0.41, 0.1845, 1)
 outline_size = 11
 
@@ -80,8 +80,7 @@ script = ExtResource("4_m4fii")
 
 [node name="RichTextLabel" type="Label" parent="Screen Container - Control/Home Screen - Control/Center Container - Control/VBoxContainer/Objective Button Container"]
 layout_mode = 2
-text = "Objective test
-"
+text = "Objective test"
 label_settings = SubResource("LabelSettings_scu8h")
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -95,6 +94,13 @@ toggle_mode = true
 texture_normal = ExtResource("3_qswn0")
 script = ExtResource("4_m4fii")
 
+[node name="RichTextLabel" type="Label" parent="Screen Container - Control/Home Screen - Control/Center Container - Control/VBoxContainer/Subjective Button Container"]
+layout_mode = 2
+text = "Subjective test"
+label_settings = SubResource("LabelSettings_scu8h")
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="Tests Button Container" type="MarginContainer" parent="Screen Container - Control/Home Screen - Control/Center Container - Control/VBoxContainer"]
 layout_mode = 2
 
@@ -103,6 +109,13 @@ layout_mode = 2
 toggle_mode = true
 texture_normal = ExtResource("3_qswn0")
 script = ExtResource("4_m4fii")
+
+[node name="RichTextLabel" type="Label" parent="Screen Container - Control/Home Screen - Control/Center Container - Control/VBoxContainer/Tests Button Container"]
+layout_mode = 2
+text = "Tests"
+label_settings = SubResource("LabelSettings_scu8h")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Tortuga" type="TextureRect" parent="Screen Container - Control/Home Screen - Control"]
 layout_mode = 0
