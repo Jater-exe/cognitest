@@ -23,6 +23,62 @@ var respuestas_guardadas = [] # Aquí se irán guardando los "SI" y "NO"
 @onready var boton_no = $MarginContainer/HBoxContainer/BOTONO 
 @onready var boton_si = $MarginContainer/HBoxContainer/BOTOSI
 
+# Definimos la ruta de la "Base de Datos"
+const RUTA_DB = "user://resultados_test.json"
+
+func guardar_nuevo_resultado(respuestas_nuevas: Array):
+	# 1. Cargar la DB existente (Deserialización)
+	var db_completa = _cargar_base_datos()
+	
+	# 2. Crear el nuevo registro (Struct/Object)
+	var nuevo_registro = {
+		"fecha": Time.get_datetime_string_from_system(),
+		"respuestas": respuestas_nuevas
+		# Podrías añadir "puntuacion" o lo que quieras aquí
+	}
+	
+	# 3. Modificar en Memoria (std::vector::push_back)
+	# Accedemos al array "registros" y añadimos el nuevo
+	db_completa["registros"].append(nuevo_registro)
+	
+	# 4. Guardar todo de nuevo (Serialización y Volcado)
+	_guardar_en_disco(db_completa)
+
+# --- Métodos Privados Helper (para mantener el código limpio) ---
+
+func _cargar_base_datos() -> Dictionary:
+	# Si el archivo no existe, devolvemos una estructura vacía inicializada
+	if not FileAccess.file_exists(RUTA_DB):
+		return { "registros": [] } # Equivalente a inicializar el struct base
+	
+	# Leemos el archivo
+	var archivo = FileAccess.open(RUTA_DB, FileAccess.READ)
+	var contenido_texto = archivo.get_as_text()
+	archivo.close()
+	
+	# Parseamos JSON
+	var json = JSON.new()
+	var error = json.parse(contenido_texto)
+	
+	if error == OK:
+		var datos = json.data
+		# Validación defensiva: Asegurarnos de que tiene la key "registros"
+		if not datos.has("registros"):
+			datos["registros"] = []
+		return datos
+	else:
+		push_error("JSON Corrupto. Reiniciando DB.")
+		return { "registros": [] }
+
+func _guardar_en_disco(datos: Dictionary):
+	var archivo = FileAccess.open(RUTA_DB, FileAccess.WRITE)
+	if archivo:
+		# Convertimos el diccionario completo a texto
+		var json_string = JSON.stringify(datos, "\t")
+		archivo.store_string(json_string)
+		archivo.close()
+		print("Base de datos actualizada con nuevo registro en user://resultados_test.json.")
+
 func _ready():
 	# 1. Cargar la primera pregunta nada más empezar
 	actualizar_interfaz()
@@ -42,11 +98,11 @@ func actualizar_interfaz():
 
 # Lógica cuando pulsa SI
 func _cuando_pulsa_si():
-	guardar_y_avanzar("SI")
+	guardar_y_avanzar("PREGUNTA " + str(indice_pregunta_actual) + ": SI")
 
 # Lógica cuando pulsa NO
 func _cuando_pulsa_no():
-	guardar_y_avanzar("NO")
+	guardar_y_avanzar("PREGUNTA " + str(indice_pregunta_actual) + ": NO")
 
 # Función central que hace el trabajo sucio
 func guardar_y_avanzar(respuesta_elegida):
@@ -61,10 +117,11 @@ func guardar_y_avanzar(respuesta_elegida):
 	actualizar_interfaz()
 
 func fin_del_juego():
-	label_pregunta.text = "Enquesta acabada"
+	label_pregunta.text = "Enquesta acabada!"
 	# Ocultamos los botones para que no puedan seguir pulsando
 	boton_si.visible = false
 	boton_no.visible = false
 	
-	print("Todas las respuestas:", respuestas_guardadas)
+	guardar_nuevo_resultado(respuestas_guardadas)
+	
 	# Aquí podrías cambiar de escena o mostrar resultados
