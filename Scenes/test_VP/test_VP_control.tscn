@@ -36,6 +36,7 @@ offset_bottom = 40.0
 layout_mode = 1
 anchor_right = 18.0
 anchor_bottom = 32.0
+offset_bottom = -180.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_wyvly")
@@ -52,7 +53,7 @@ color = Color(0.45714, 0.57, 0.4161, 1)
 [node name="Center Container - Control" type="Control" parent="Screen Container - Control/Home Screen - Control"]
 anchors_preset = 0
 offset_right = 720.0
-offset_bottom = 1280.0
+offset_bottom = 1100.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Screen Container - Control/Home Screen - Control/Center Container - Control"]
 layout_mode = 1

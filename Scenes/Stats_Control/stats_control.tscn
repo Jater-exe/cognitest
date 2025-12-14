@@ -1,15 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://caihfgpu87c5o"]
+[gd_scene load_steps=10 format=3 uid="uid://caihfgpu87c5o"]
 
 [ext_resource type="Script" uid="uid://p31pqne54mcv" path="res://HomeScreenScript.gd" id="1_nj0r8"]
 [ext_resource type="Texture2D" uid="uid://ccxyj4inyh5ge" path="res://Textures/tortuga_static.png" id="2_5ktac"]
+[ext_resource type="Script" uid="uid://6xoqudsxtili" path="res://Scenes/Stats_Control/v_box_container.gd" id="2_wsgvv"]
 [ext_resource type="Script" uid="uid://dyn4k0ec6dg3" path="res://Scenes/Stats_Control/script_video_button.gd" id="3_iuieq"]
 [ext_resource type="Texture2D" uid="uid://6il42pqq7n8n" path="res://Textures/normal_button.png" id="4_f5k4b"]
 [ext_resource type="Script" uid="uid://cgyvg66jocrn7" path="res://Scenes/Stats_Control/script_exit_button.gd" id="5_iuieq"]
-
-[sub_resource type="LabelSettings" id="LabelSettings_luai5"]
-font_size = 90
-font_color = Color(0.3137255, 0.4117647, 0.18431373, 1)
-outline_size = 18
 
 [sub_resource type="LabelSettings" id="LabelSettings_wsgvv"]
 font_size = 60
@@ -20,6 +16,11 @@ outline_size = 16
 font_size = 60
 font_color = Color(0.3137255, 0.4117647, 0.18431373, 1)
 outline_size = 16
+
+[sub_resource type="LabelSettings" id="LabelSettings_luai5"]
+font_size = 90
+font_color = Color(0.3137255, 0.4117647, 0.18431373, 1)
+outline_size = 18
 
 [node name="Test_At - Control" type="Control"]
 layout_mode = 3
@@ -36,6 +37,7 @@ offset_bottom = 40.0
 layout_mode = 1
 anchor_right = 18.0
 anchor_bottom = 32.0
+offset_bottom = -180.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_nj0r8")
@@ -52,7 +54,50 @@ color = Color(0.45714, 0.57, 0.4161, 1)
 [node name="Center Container - Control" type="Control" parent="Screen Container - Control/Home Screen - Control"]
 anchors_preset = 0
 offset_right = 720.0
-offset_bottom = 1280.0
+offset_bottom = 1100.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Screen Container - Control/Home Screen - Control/Center Container - Control"]
+layout_mode = 0
+offset_left = 135.0
+offset_top = 400.0
+offset_right = 585.0
+offset_bottom = 904.0
+theme_override_constants/separation = 20
+script = ExtResource("2_wsgvv")
+
+[node name="Video Button Container" type="MarginContainer" parent="Screen Container - Control/Home Screen - Control/Center Container - Control/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 0
+script = ExtResource("3_iuieq")
+
+[node name="Start - Button" type="TextureButton" parent="Screen Container - Control/Home Screen - Control/Center Container - Control/VBoxContainer/Video Button Container"]
+layout_mode = 2
+toggle_mode = true
+texture_normal = ExtResource("4_f5k4b")
+
+[node name="Start-Text" type="Label" parent="Screen Container - Control/Home Screen - Control/Center Container - Control/VBoxContainer/Video Button Container"]
+layout_mode = 2
+text = "Veure vídeo"
+label_settings = SubResource("LabelSettings_wsgvv")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Exit Button Container" type="MarginContainer" parent="Screen Container - Control/Home Screen - Control/Center Container - Control/VBoxContainer"]
+layout_mode = 2
+script = ExtResource("5_iuieq")
+
+[node name="Exit - Button" type="TextureButton" parent="Screen Container - Control/Home Screen - Control/Center Container - Control/VBoxContainer/Exit Button Container"]
+layout_mode = 2
+toggle_mode = true
+texture_normal = ExtResource("4_f5k4b")
+
+[node name="Exit-Text" type="Label" parent="Screen Container - Control/Home Screen - Control/Center Container - Control/VBoxContainer/Exit Button Container"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Exit"
+label_settings = SubResource("LabelSettings_gmdkr")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Tortuga" type="TextureRect" parent="Screen Container - Control/Home Screen - Control/Center Container - Control"]
 layout_mode = 0
@@ -73,51 +118,9 @@ offset_bottom = 207.0
 text = "Recomanació"
 label_settings = SubResource("LabelSettings_luai5")
 
-[node name="Video Button Container" type="MarginContainer" parent="Screen Container - Control/Home Screen - Control/Center Container - Control"]
-layout_mode = 0
-offset_left = 142.0
-offset_top = 511.0
-offset_right = 592.0
-offset_bottom = 761.0
-theme_override_constants/margin_left = 0
-script = ExtResource("3_iuieq")
-
-[node name="Start - Button" type="TextureButton" parent="Screen Container - Control/Home Screen - Control/Center Container - Control/Video Button Container"]
-layout_mode = 2
-toggle_mode = true
-texture_normal = ExtResource("4_f5k4b")
-
-[node name="Start-Text" type="Label" parent="Screen Container - Control/Home Screen - Control/Center Container - Control/Video Button Container"]
-layout_mode = 2
-text = "Veure vídeo"
-label_settings = SubResource("LabelSettings_wsgvv")
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Exit Button Container" type="MarginContainer" parent="Screen Container - Control/Home Screen - Control/Center Container - Control"]
-layout_mode = 0
-offset_left = 142.0
-offset_top = 890.0
-offset_right = 592.0
-offset_bottom = 1140.0
-script = ExtResource("5_iuieq")
-
-[node name="Exit - Button" type="TextureButton" parent="Screen Container - Control/Home Screen - Control/Center Container - Control/Exit Button Container"]
-layout_mode = 2
-toggle_mode = true
-texture_normal = ExtResource("4_f5k4b")
-
-[node name="Exit-Text" type="Label" parent="Screen Container - Control/Home Screen - Control/Center Container - Control/Exit Button Container"]
-layout_mode = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-text = "Exit"
-label_settings = SubResource("LabelSettings_gmdkr")
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[connection signal="button_down" from="Screen Container - Control/Home Screen - Control/Center Container - Control/Video Button Container/Start - Button" to="Screen Container - Control/Home Screen - Control/Center Container - Control/Video Button Container" method="_on_start__button_button_down"]
-[connection signal="button_up" from="Screen Container - Control/Home Screen - Control/Center Container - Control/Video Button Container/Start - Button" to="Screen Container - Control/Home Screen - Control/Center Container - Control/Video Button Container" method="_on_start__button_button_up"]
-[connection signal="pressed" from="Screen Container - Control/Home Screen - Control/Center Container - Control/Video Button Container/Start - Button" to="Screen Container - Control/Home Screen - Control/Center Container - Control/Video Button Container" method="_on_start__button_pressed"]
-[connection signal="button_down" from="Screen Container - Control/Home Screen - Control/Center Container - Control/Exit Button Container/Exit - Button" to="Screen Container - Control/Home Screen - Control/Center Container - Control/Exit Button Container" method="_on_exit__button_button_down"]
-[connection signal="button_up" from="Screen Container - Control/Home Screen - Control/Center Container - Control/Exit Button Container/Exit - Button" to="Screen Container - Control/Home Screen - Control/Center Container - Control/Exit Button Container" method="_on_exit__button_button_up"]
-[connection signal="pressed" from="Screen Container - Control/Home Screen - Control/Center Container - Control/Exit Button Container/Exit - Button" to="Screen Container - Control/Home Screen - Control/Center Container - Control/Exit Button Container" method="_on_exit__button_pressed"]
+[connection signal="button_down" from="Screen Container - Control/Home Screen - Control/Center Container - Control/VBoxContainer/Video Button Container/Start - Button" to="Screen Container - Control/Home Screen - Control/Center Container - Control/VBoxContainer/Video Button Container" method="_on_start__button_button_down"]
+[connection signal="button_up" from="Screen Container - Control/Home Screen - Control/Center Container - Control/VBoxContainer/Video Button Container/Start - Button" to="Screen Container - Control/Home Screen - Control/Center Container - Control/VBoxContainer/Video Button Container" method="_on_start__button_button_up"]
+[connection signal="pressed" from="Screen Container - Control/Home Screen - Control/Center Container - Control/VBoxContainer/Video Button Container/Start - Button" to="Screen Container - Control/Home Screen - Control/Center Container - Control/VBoxContainer/Video Button Container" method="_on_start__button_pressed"]
+[connection signal="button_down" from="Screen Container - Control/Home Screen - Control/Center Container - Control/VBoxContainer/Exit Button Container/Exit - Button" to="Screen Container - Control/Home Screen - Control/Center Container - Control/VBoxContainer/Exit Button Container" method="_on_exit__button_button_down"]
+[connection signal="button_up" from="Screen Container - Control/Home Screen - Control/Center Container - Control/VBoxContainer/Exit Button Container/Exit - Button" to="Screen Container - Control/Home Screen - Control/Center Container - Control/VBoxContainer/Exit Button Container" method="_on_exit__button_button_up"]
+[connection signal="pressed" from="Screen Container - Control/Home Screen - Control/Center Container - Control/VBoxContainer/Exit Button Container/Exit - Button" to="Screen Container - Control/Home Screen - Control/Center Container - Control/VBoxContainer/Exit Button Container" method="_on_exit__button_pressed"]
