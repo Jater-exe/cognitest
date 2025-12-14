@@ -115,7 +115,6 @@ label_settings = SubResource("LabelSettings_gmdkr")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[connection signal="ready" from="Screen Container - Control/Home Screen - Control" to="Screen Container - Control/Home Screen - Control" method="_on_ready"]
 [connection signal="button_down" from="Screen Container - Control/Home Screen - Control/Center Container - Control/Video Button Container/Start - Button" to="Screen Container - Control/Home Screen - Control/Center Container - Control/Video Button Container" method="_on_start__button_button_down"]
 [connection signal="button_up" from="Screen Container - Control/Home Screen - Control/Center Container - Control/Video Button Container/Start - Button" to="Screen Container - Control/Home Screen - Control/Center Container - Control/Video Button Container" method="_on_start__button_button_up"]
 [connection signal="pressed" from="Screen Container - Control/Home Screen - Control/Center Container - Control/Video Button Container/Start - Button" to="Screen Container - Control/Home Screen - Control/Center Container - Control/Video Button Container" method="_on_start__button_pressed"]
