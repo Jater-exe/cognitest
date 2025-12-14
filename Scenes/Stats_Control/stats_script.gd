@@ -23,31 +23,12 @@ func generar_informe_combinado():
 	if datos_vp.is_empty() and datos_survey.is_empty():
 		print("Error: No se encontraron datos para analizar.")
 		return
-
+	
+	var vp_recientes = _obtener_ultimos(datos_vp, CANTIDAD_VP)
+	var survey_recientes = _obtener_ultimos(datos_survey, CANTIDAD_SURVEY)
+	
 	# 2. ANALIZAR DATOS
-	var analisis_vp = _analizar_vp(datos_vp.get("registros", []))
-	var analisis_survey = _analizar_survey(datos_survey.get("registros", []))
-	
-	var vp_recientes = _obtener_ultimos(datos_vp_completos, CANTIDAD_VP)
-	var survey_recientes = _obtener_ultimos(datos_survey_completos, CANTIDAD_SURVEY)
-	
-	# 3. COMBINAR DATOS
-	var informe_final = {
-		"fecha_generacion": Time.get_datetime_string_from_system(),
-		"resumen_ejecutivo": {
-			"total_tests_vp": datos_vp.get("registros", []).size(),
-			"total_encuestas": datos_survey.get("registros", []).size()
-		},
-		"analisis_velocidad_procesamiento": analisis_vp,
-		"analisis_cognitivo_encuesta": analisis_survey,
-		# Aquí incluimos los datos crudos originales por si se necesitan
-		"datos_crudos_vp": datos_vp.get("registros", []),
-		"datos_crudos_encuesta": datos_survey.get("registros", [])
-	}
-	
-	# 4. GUARDAR RESULTADO
-	_guardar_json(PATH_INFORME, informe_final)
-	print("--- INFORME GENERADO EN: " + PATH_INFORME + " ---")
+	var analisis = _analizar_datos(datos_vp.get("registros", []), datos_survey.get("registros", []))
 
 
 # --- NUEVA FUNCIÓN DE FILTRADO ---
@@ -64,30 +45,46 @@ func _obtener_ultimos(lista: Array, cantidad: int) -> Array:
 	
 
 # --- LÓGICA DE ANÁLISIS VP ---
-func _analizar_vp(lista_registros: Array) -> Dictionary:
-	if lista_registros.is_empty():
+func _analizar_datos(results_vp: Array, results_subj: Array):
+	if results_vp.is_empty() or results_subj.is_empty():
 		return {"mensaje": "Sin datos"}
-		
-	var suma_tiempo = 0.0
-	var conteo_lentos = 0 # Cantidad de veces que superó los 9 segundos (true)
 	
-	for reg in lista_registros:
+	var sumas_categorias = {
+		"ATENCIO": 0, "VEL_PROC": 0, "MEMORIA": 0, "FLU_VERB": 0, "FUNC_EXEC": 0
+	}
+	var problemes_categoria = {
+		"ATENCIO": false, "VEL_PROC": false, "MEMORIA": false, "FLU_VERB": false, "FUNC_EXEC": false
+	}
+	var es_lento:
+	
+	for reg in results_vp:
 		# En tu script anterior guardamos "raw_wait_time" (float) y "time_delay" (bool)
 		# Usamos get() por seguridad en caso de que alguna clave falte
-		var tiempo = reg.get("raw_wait_time", 0.0)
-		var es_lento = reg.get("time_delay", false)
-		
-		suma_tiempo += tiempo
-		if es_lento:
-			conteo_lentos += 1
-			
-	var promedio = suma_tiempo / lista_registros.size()
+		es_lento = reg.get("time_delay")
 	
-	return {
-		"tiempo_promedio_reaccion": snapped(promedio, 0.01), # Redondeado a 2 decimales
-		"intentos_fallidos_o_lentos": conteo_lentos,
-		"tasa_exito": str(snapped((1.0 - (float(conteo_lentos) / lista_registros.size())) * 100, 0.1)) + "%"
-	}
+	for reg in results_subj:
+		# reg["puntuacio"] es un Array de Strings tipo ["ATENCIO: 1", "MEMORIA: 0", ...]
+		var stats_array = reg.get("puntuacio", [])
+		
+		for item_string in stats_array:
+			# Parseamos el string: "ATENCIO: 2" -> ["ATENCIO", " 2"]
+			var partes = item_string.split(":")
+			if partes.size() == 2:
+				var categoria = partes[0].strip_edges()
+				var valor = partes[1].strip_edges().to_int()
+				
+				if sumas_categorias.has(categoria) and problemes_categoria.has(categoria):
+					sumas_categorias[categoria] += valor
+					if(categoria == "ATENCIO" and valor <= 1):
+						problemes_categoria[categoria] = true
+					elif(categoria == "VEL_PROC" and (valor <= 1 or es_lento)):
+						problemes_categoria[categoria] = true
+					elif(categoria == "MEMORIA" and valor <= 1):
+						problemes_categoria[categoria] = true
+					elif(categoria == "FLU_VERB" and valor == 0):
+						problemes_categoria[categoria] = true
+					elif(categoria == "FUNC_EXEC" and valor <= 1):
+						problemes_categoria[categoria] = true
 
 # --- LÓGICA DE ANÁLISIS ENCUESTA ---
 func _analizar_survey(lista_registros: Array) -> Dictionary:
