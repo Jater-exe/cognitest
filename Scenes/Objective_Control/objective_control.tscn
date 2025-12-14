@@ -2,11 +2,11 @@
 
 [ext_resource type="Texture2D" uid="uid://ccxyj4inyh5ge" path="res://Textures/tortuga_static.png" id="1_84rv0"]
 [ext_resource type="Texture2D" uid="uid://6il42pqq7n8n" path="res://Textures/normal_button.png" id="2_3fb7c"]
-[ext_resource type="Script" path="res://Scenes/Objective_Control/script_testfa.gd" id="2_gqcsa"]
-[ext_resource type="Script" path="res://Scenes/Objective_Control/script_return.gd" id="3_3fb7c"]
-[ext_resource type="Script" path="res://Scenes/Objective_Control/script_testvp.gd" id="3_gqcsa"]
-[ext_resource type="Script" path="res://Scenes/Objective_Control/script_testat.gd" id="4_7ae4f"]
-[ext_resource type="Script" path="res://Scenes/Objective_Control/script_testmt.gd" id="5_366xq"]
+[ext_resource type="Script" uid="uid://g0o2s20hnovh" path="res://Scenes/Objective_Control/script_testfa.gd" id="2_gqcsa"]
+[ext_resource type="Script" uid="uid://b45b5u1py6l8u" path="res://Scenes/Objective_Control/script_return.gd" id="3_3fb7c"]
+[ext_resource type="Script" uid="uid://drigglidbmka2" path="res://Scenes/Objective_Control/script_testvp.gd" id="3_gqcsa"]
+[ext_resource type="Script" uid="uid://b51hy3d0ar5xa" path="res://Scenes/Objective_Control/script_testat.gd" id="4_7ae4f"]
+[ext_resource type="Script" uid="uid://buqwp28f4oyna" path="res://Scenes/Objective_Control/script_testmt.gd" id="5_366xq"]
 [ext_resource type="Texture2D" uid="uid://b5kcv0c15cudv" path="res://Textures/button_return_control.png" id="8_366xq"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_p3ucc"]
@@ -162,7 +162,7 @@ texture_normal = ExtResource("8_366xq")
 
 [node name="ReturnLabel" type="Label" parent="Objective Container - Control/Objective Screen - Control/Center Container - Control/ReturnMargin"]
 layout_mode = 2
-text = "Return"
+text = "Exit"
 label_settings = SubResource("LabelSettings_3dh8w")
 horizontal_alignment = 1
 vertical_alignment = 1
