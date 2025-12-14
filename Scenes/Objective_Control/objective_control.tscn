@@ -2,11 +2,11 @@
 
 [ext_resource type="Texture2D" uid="uid://ccxyj4inyh5ge" path="res://Textures/tortuga_static.png" id="1_84rv0"]
 [ext_resource type="Texture2D" uid="uid://6il42pqq7n8n" path="res://Textures/normal_button.png" id="2_3fb7c"]
-[ext_resource type="Script" uid="uid://g0o2s20hnovh" path="res://Scenes/Objective_Control/script_testfa.gd" id="2_gqcsa"]
-[ext_resource type="Script" uid="uid://b45b5u1py6l8u" path="res://Scenes/Objective_Control/script_return.gd" id="3_3fb7c"]
-[ext_resource type="Script" uid="uid://drigglidbmka2" path="res://Scenes/Objective_Control/script_testvp.gd" id="3_gqcsa"]
-[ext_resource type="Script" uid="uid://b51hy3d0ar5xa" path="res://Scenes/Objective_Control/script_testat.gd" id="4_7ae4f"]
-[ext_resource type="Script" uid="uid://buqwp28f4oyna" path="res://Scenes/Objective_Control/script_testmt.gd" id="5_366xq"]
+[ext_resource type="Script" path="res://Scenes/Objective_Control/script_testfa.gd" id="2_gqcsa"]
+[ext_resource type="Script" path="res://Scenes/Objective_Control/script_return.gd" id="3_3fb7c"]
+[ext_resource type="Script" path="res://Scenes/Objective_Control/script_testvp.gd" id="3_gqcsa"]
+[ext_resource type="Script" path="res://Scenes/Objective_Control/script_testat.gd" id="4_7ae4f"]
+[ext_resource type="Script" path="res://Scenes/Objective_Control/script_testmt.gd" id="5_366xq"]
 [ext_resource type="Texture2D" uid="uid://b5kcv0c15cudv" path="res://Textures/button_return_control.png" id="8_366xq"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_p3ucc"]
@@ -34,6 +34,7 @@ offset_bottom = 40.0
 layout_mode = 1
 anchor_right = 18.0
 anchor_bottom = 32.0
+offset_bottom = -180.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -49,14 +50,14 @@ color = Color(0.45882353, 0.5686275, 0.41568628, 1)
 [node name="Center Container - Control" type="Control" parent="Objective Container - Control/Objective Screen - Control"]
 anchors_preset = 0
 offset_right = 720.0
-offset_bottom = 1280.0
+offset_bottom = 1100.0
 
 [node name="Tortuga" type="TextureRect" parent="Objective Container - Control/Objective Screen - Control/Center Container - Control"]
 layout_mode = 0
-offset_left = 475.99997
-offset_top = -115.99999
-offset_right = 1500.0
-offset_bottom = 908.0
+offset_left = 448.0
+offset_top = -96.99995
+offset_right = 1472.0
+offset_bottom = 927.00006
 rotation = 0.37231505
 scale = Vector2(0.34813032, 0.34813032)
 texture = ExtResource("1_84rv0")
@@ -68,13 +69,13 @@ anchor_left = 0.40100002
 anchor_top = 0.568
 anchor_right = 0.40100002
 anchor_bottom = 0.568
-offset_left = -125.72003
-offset_top = -525.04004
-offset_right = 324.27997
-offset_bottom = 624.95996
+offset_left = -80.72005
+offset_top = -425.80005
+offset_right = 369.27997
+offset_bottom = 724.19995
 grow_horizontal = 2
 grow_vertical = 2
-scale = Vector2(0.9, 0.9)
+scale = Vector2(0.7, 0.7)
 theme_override_constants/separation = 50
 alignment = 1
 
@@ -83,6 +84,7 @@ layout_mode = 2
 script = ExtResource("2_gqcsa")
 
 [node name="TestFATexture" type="TextureButton" parent="Objective Container - Control/Objective Screen - Control/Center Container - Control/VBoxContainer/TestFAMargin"]
+custom_minimum_size = Vector2(0, 170)
 layout_mode = 2
 toggle_mode = true
 texture_normal = ExtResource("2_3fb7c")

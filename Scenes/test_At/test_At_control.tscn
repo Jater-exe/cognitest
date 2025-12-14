@@ -1,13 +1,13 @@
 [gd_scene load_steps=12 format=3 uid="uid://cy0cjmp877rsx"]
 
 [ext_resource type="Script" uid="uid://p31pqne54mcv" path="res://HomeScreenScript.gd" id="1_703xo"]
-[ext_resource type="Script" uid="uid://dexremf32qeyi" path="res://Scenes/test_At/center_container___control.gd" id="2_0fsqh"]
+[ext_resource type="Script" path="res://Scenes/test_At/center_container___control.gd" id="2_0fsqh"]
 [ext_resource type="Script" uid="uid://3rhaeqv2awu" path="res://Scenes/test_At/start_button_container.gd" id="3_luai5"]
 [ext_resource type="Texture2D" uid="uid://6il42pqq7n8n" path="res://Textures/normal_button.png" id="4_hqrpm"]
 [ext_resource type="Script" uid="uid://b6ua6hvcbq1uv" path="res://Scenes/test_At/exit_button_container.gd" id="5_0fsqh"]
 [ext_resource type="Texture2D" uid="uid://ccxyj4inyh5ge" path="res://Textures/tortuga_static.png" id="6_05jk7"]
 [ext_resource type="Script" uid="uid://bvdw1phsy2flp" path="res://addons/godot_whisper/capture_stream_to_text.gd" id="7_j0u1u"]
-[ext_resource type="WhisperResource" uid="uid://cqd253a46w0gd" path="res://addons/godot_whisper/models/ggml-small.bin" id="7_xse0h"]
+[ext_resource type="WhisperResource" path="res://addons/godot_whisper/models/ggml-small.bin" id="7_xse0h"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_luai5"]
 font_size = 120
@@ -39,6 +39,7 @@ offset_bottom = 40.0
 layout_mode = 1
 anchor_right = 18.0
 anchor_bottom = 32.0
+offset_bottom = -180.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_703xo")
@@ -55,16 +56,8 @@ color = Color(0.45714, 0.57, 0.4161, 1)
 [node name="Center Container - Control" type="Control" parent="Screen Container - Control/Home Screen - Control"]
 anchors_preset = 0
 offset_right = 720.0
-offset_bottom = 1280.0
+offset_bottom = 1100.0
 script = ExtResource("2_0fsqh")
-
-[node name="Label" type="Label" parent="Screen Container - Control/Home Screen - Control/Center Container - Control"]
-layout_mode = 0
-offset_left = 306.0
-offset_top = 435.0
-offset_right = 399.0
-offset_bottom = 458.0
-text = "eyauydsada"
 
 [node name="Title_AtC_Label" type="Label" parent="Screen Container - Control/Home Screen - Control/Center Container - Control"]
 layout_mode = 0
