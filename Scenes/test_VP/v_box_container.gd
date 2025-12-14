@@ -4,10 +4,12 @@ const MIN_VALUE: int = 1
 const MAX_VALUE: int = 10
 const LIST_SIZE: int = 10
 const BUTTON_SCENE = preload("res://Scenes/test_VP/NumberButton.tscn") # Assume you have a reusable button scene
-const SAVE_PATH = "res://Scenes/test_VP/test_VP.json"
+const SAVE_PATH = "res://JSON/test_VP.json"
 const KEY_FLOAT_VALUE = "time_delay"
 # New key for the timestamp
 const KEY_TIMESTAMP = "test_time"
+const KEY_RESULT = "test_result"
+
 @onready var top_row_container: HBoxContainer = $HBoxContainer
 @onready var bottom_row_container: HBoxContainer = $HBoxContainer2
 var last_num: int = 0
@@ -74,16 +76,60 @@ func _process(delta: float) -> void:
 	current_wait_time += delta
 
 
-func save_float_to_json(float_to_save: float) -> void:
+
+#GUARDAT DADES
+
+func _cargar_base_datos() -> Dictionary:
+	# Si el archivo no existe, devolvemos una estructura vacía inicializada
+	if not FileAccess.file_exists(SAVE_PATH):
+		return { "registros": [] } # Equivalente a inicializar el struct base
+	
+	# Leemos el archivo
+	var archivo = FileAccess.open(SAVE_PATH, FileAccess.READ)
+	var contenido_texto = archivo.get_as_text()
+	archivo.close()
+	
+	# Parseamos JSON
+	var json = JSON.new()
+	var error = json.parse(contenido_texto)
+	
+	if error == OK:
+		var datos = json.data
+		# Validación defensiva: Asegurarnos de que tiene la key "registros"
+		if not datos.has("registros"):
+			datos["registros"] = []
+		return datos
+	else:
+		push_error("JSON Corrupto. Reiniciando DB.")
+		return { "registros": [] }
+
+func _guardar_en_disco(datos: Dictionary):
+	var archivo = FileAccess.open(SAVE_PATH, FileAccess.WRITE)
+	if archivo:
+		# Convertimos el diccionario completo a texto
+		var json_string = JSON.stringify(datos, "\t")
+		archivo.store_string(json_string)
+		archivo.close()
+		print("Base de datos actualizada con nuevo registro en user://resultados_test.json.")
+
+
+func save_float_to_json(wait_time: float) -> void:
+	var resultat_bool
+	if(wait_time>9.00):
+		resultat_bool = "not_pass"
+	else:
+		resultat_bool = "pass"
+	
+	var db_completa = _cargar_base_datos()
+	
 	var current_time_string: String = Time.get_datetime_string_from_system()
 	var save_data: Dictionary = {
-		KEY_FLOAT_VALUE: float_to_save,
-		KEY_TIMESTAMP: current_time_string
+		KEY_TIMESTAMP: current_time_string,
+		KEY_RESULT: resultat_bool,
+		KEY_FLOAT_VALUE: wait_time
 	}
-	var json_string: String = JSON.stringify(save_data, "\t")
-	var file = FileAccess.open(SAVE_PATH, FileAccess.WRITE)
-	if file:
-		file.store_string(json_string)
-		print("Successfully saved float and timestamp to: ", SAVE_PATH)
-	else:
-		print("ERROR: Could not save file at path: ", SAVE_PATH)
+	# 4. Añadir el nuevo registro a la lista
+	db_completa["registros"].append(save_data)
+	
+	# 5. Guardar todo el archivo de nuevo
+	_guardar_en_disco(db_completa)
