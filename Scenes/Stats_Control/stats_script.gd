@@ -24,11 +24,11 @@ func generar_informe_combinado():
 		print("Error: No se encontraron datos para analizar.")
 		return
 	
-	var vp_recientes = _obtener_ultimos(datos_vp, CANTIDAD_VP)
-	var survey_recientes = _obtener_ultimos(datos_survey, CANTIDAD_SURVEY)
+	#var vp_recientes = _obtener_ultimos(datos_vp, CANTIDAD_VP)
+	#var survey_recientes = _obtener_ultimos(datos_survey, CANTIDAD_SURVEY)
 	
 	# 2. ANALIZAR DATOS
-	var analisis = _analizar_datos(datos_vp.get("registros", []), datos_survey.get("registros", []))
+	_analizar_datos(datos_vp.get("registros", []), datos_survey.get("registros", []))
 
 
 # --- NUEVA FUNCIÓN DE FILTRADO ---
@@ -55,7 +55,7 @@ func _analizar_datos(results_vp: Array, results_subj: Array):
 	var problemes_categoria = {
 		"ATENCIO": false, "VEL_PROC": false, "MEMORIA": false, "FLU_VERB": false, "FUNC_EXEC": false
 	}
-	var es_lento:
+	var es_lento
 	
 	for reg in results_vp:
 		# En tu script anterior guardamos "raw_wait_time" (float) y "time_delay" (bool)

@@ -32,6 +32,26 @@ func _on_start__button_button_up() -> void:
 	tween.tween_property(self, "scale", Vector2.ONE, anim_duration).set_ease(Tween.EASE_OUT)
 
 
-func _on_start__button_pressed() -> void:
-	var link = "https://www.youtube.com/watch?v=dQw4w9WgXcQ&list=RDdQw4w9WgXcQ&start_radio=1"
+func _on_AT__button_pressed() -> void:
+	var link = "https://www.youtube.com/watch?v=B_M8eFq2GCA"
+	OS.shell_open(link)
+	link = "https://www.youtube.com/watch?feature=shared&v=_5HCl5CDA94"
+	OS.shell_open(link)
+func _on_M__button_pressed() -> void:
+	var link = "https://www.youtube.com/watch?v=RExO6edCQYk"
+	OS.shell_open(link)
+	link = "https://www.youtube.com/watch?v=FJIy-R3Gze4"
+	OS.shell_open(link)
+	link = "https://www.youtube.com/watch?feature=shared&v=iGTnb1YeRNw"
+	OS.shell_open(link)
+func _on_VP__button_pressed() -> void:
+	var link = "https://www.youtube.com/watch?v=RExO6edCQYk"
+	OS.shell_open(link)
+	link = "https://www.youtube.com/watch?v=FJIy-R3Gze4"
+	OS.shell_open(link)
+func _on_FV__button_pressed() -> void:
+	var link = "https://www.youtube.com/watch?v=B_M8eFq2GCA"
+	OS.shell_open(link)
+func _on_FE__button_pressed() -> void:
+	var link = "https://www.youtube.com/watch?v=FJIy-R3Gze4"
 	OS.shell_open(link)

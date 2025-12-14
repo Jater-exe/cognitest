@@ -1,7 +1,8 @@
 extends VBoxContainer
 
 
-const SAVE_PATH = "user://game_data.json"
+const SAVE_PATH_SUB = "res://JSON/resultados_test.json"
+const SAVE_PATH_OBJ = "res://JSON/test_VP.json"
 
 func load_data_from_json() -> Dictionary:
 	
@@ -9,18 +10,20 @@ func load_data_from_json() -> Dictionary:
 		print("No saved file found. Returning empty dictionary.")
 		return {}
 
-	var file = FileAccess.open(SAVE_PATH, FileAccess.READ)
+	var file_sub = FileAccess.open(SAVE_PATH_SUB, FileAccess.READ)
+	var file_obj = FileAccess.open(SAVE_PATH_OBJ, FileAccess.READ)
 	
-	if file:
-		var json_string: String = file.get_as_text()
-		var parse_result: JSON.ParseResult = JSON.parse_string(json_string)
+	if file_sub and file_obj:
+		var json_string_sub: String = file_sub.get_as_text()
+		var parse_result_sub: JSON.ParseResult = JSON.parse_string(json_string_sub)
+		
+		var json_string_obj: String = file_sub.get_as_text()
+		var parse_result_obj: JSON.ParseResult = JSON.parse_string(json_string_obj)
 
-		if parse_result:
+		if parse_result_obj and parse_result_sub:
 			var loaded_data: Dictionary = parse_result # This dictionary contains both keys
 			print("Successfully loaded data.")
-			# Example of extracting the data:
-			# print("Loaded Float:", loaded_data.get(KEY_FLOAT_VALUE))
-			# print("Last Saved:", loaded_data.get(KEY_TIMESTAMP))
+			
 			return loaded_data
 		else:
 			print("ERROR: Failed to parse JSON file.")

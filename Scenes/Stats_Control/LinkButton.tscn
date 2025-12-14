@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://brp823cj5fnfv"]
+
+[ext_resource type="Texture2D" uid="uid://6il42pqq7n8n" path="res://Textures/normal_button.png" id="1_hmhhm"]
+[ext_resource type="Script" uid="uid://dyn4k0ec6dg3" path="res://Scenes/Stats_Control/script_video_button.gd" id="2_gyx2s"]
+
+[node name="LinkButton" type="TextureButton"]
+custom_minimum_size = Vector2(240, 120)
+texture_normal = ExtResource("1_hmhhm")
+script = ExtResource("2_gyx2s")
+
+[connection signal="button_down" from="." to="." method="_on_start__button_button_down"]
+[connection signal="button_up" from="." to="." method="_on_start__button_button_up"]
+[connection signal="pressed" from="." to="." method="_on_start__button_pressed"]
